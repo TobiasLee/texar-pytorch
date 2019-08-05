@@ -124,7 +124,6 @@ class Seq2SeqAttnActor(nn.Module):
             start_tokens = memory.new_full(
                 batch['target_length'].size(), self.bos_token_id,
                 dtype=torch.int64)
-
             infer_outputs = self.decoder(
                 start_tokens=start_tokens,
                 end_token=self.eos_token_id.item(),
@@ -152,11 +151,11 @@ class Seq2SeqAttnActor(nn.Module):
                 memory_sequence_length=batch['source_length'],
                 require_state=True,
                 max_decoding_length=60)
-            print("in bp4")
 
             # logits is contained in the outputs
             return infer_outputs, decoder_states
-
+        else:
+            raise ValueError("unsupported mode")
 
 class Critic(nn.Module):
     """Critic model to guide the actor. Indeed, it is also a encoder-decoder.
@@ -292,6 +291,7 @@ class Critic(nn.Module):
         else:
             raise ValueError("Unsupported mode")
 
+
 def _main():
     """pseudo-code"""
 
@@ -345,10 +345,10 @@ def _main():
         else:
             data_iterator.switch_to_test_data()
         actor.eval()
-
+        print("start evaluating....")
         refs, hypos = [], []
         for batch in data_iterator:
-            infer_outputs = actor(batch, mode="mle_val")
+            infer_outputs = actor(batch, mode="mle_eval")
             output_ids = infer_outputs["sample_id"][:, :, 0].cpu()
             target_texts_ori = [text[1:] for text in batch['target_text']]
             target_texts = tx.utils.strip_special_tokens(
@@ -457,22 +457,21 @@ def _main():
     def _delay_update_params(initial=False):
 
         for d_p, p in zip(delay_critic.parameters(), critic.parameters()):
-            d_p = config_data.fi_critic * p + d_p
+            d_p.data.copy_(config_data.fi_critic * p.data + d_p.data)
         for d_p, p in zip(delay_actor.parameters(), actor.parameters()):
-            d_p = config_data.fi_actor * p + d_p
+            d_p.data.copy_(config_data.fi_actor * p.data + d_p.data)
 
     for d_p, p in zip(delay_critic.parameters(), critic.parameters()):
-        d_p = p.clone()
+        d_p.data.copy_(p.data)
     for d_p, p in zip(delay_actor.parameters(), actor.parameters()):
-        d_p = p.clone()
+        d_p.data.copy_(p.data)
+
 
     pre_train_actor()
     # copy params
     pre_train_critic()
     # copy  params
     rl_training()
-
-
 
 
 if __name__ == '__main__':
