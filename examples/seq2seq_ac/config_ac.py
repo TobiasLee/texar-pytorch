@@ -1,4 +1,7 @@
 pre_train_num_epochs = 15
+rl_epochs = 10
+
+
 display = 50
 lambda_ll = 0.1
 source_vocab_file = './data/iwslt14/vocab.de'

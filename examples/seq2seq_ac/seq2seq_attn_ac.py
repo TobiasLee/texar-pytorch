@@ -24,14 +24,13 @@ import texar.torch as tx
 import os
 import copy
 from nltk.translate.bleu_score import sentence_bleu
-from nltk.translate.bleu_score import SmoothingFunction
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
     '--config-model', type=str, default="config_model",
     help="The model config.")
 parser.add_argument(
-    '--config-data', type=str, default="config_toy_copy",
+    '--config-data', type=str, default="config_ac",
     help="The dataset config.")
 args = parser.parse_args()
 
@@ -366,7 +365,7 @@ def _main():
 
     def pre_train_actor():
         best_val_bleu = -1.
-        for i in range(config_data.num_epochs):
+        for i in range(config_data.pre_train_num_epochs):
             _mle_actor_train_epoch()
 
             val_bleu = _actor_mle_eval_epoch('val')
@@ -376,7 +375,7 @@ def _main():
 
             if val_bleu > best_val_bleu:
                 model_path = os.path.join(args.output_dir, args.output_model)
-                os.makedirs(model_path)
+                os.makedirs(model_path, exist_ok=True)
                 print(f"Saving model to {model_path}")
                 states = {
                     "model": actor.state_dict(),
@@ -392,10 +391,10 @@ def _main():
         print("pre-train actor finished...")
 
     def pre_train_critic():
-        for i in range(config_data.num_epochs):
+        step = 0
+        for i in range(config_data.pre_train_num_epochs):
             data_iterator.switch_to_train_data()
             actor.eval()
-            print(actor.decoder.vocab_size)
             for batch in data_iterator:
                 actor_outputs, actor_states = actor(batch, mode='pre-train-critic')
                 # need to know what actor_outputs look lie
@@ -410,14 +409,17 @@ def _main():
 
                 loss = critic(batch, sampled_ids, reward=reward, target_actor=delay_actor,
                               target_critic=delay_critic, actor_states=actor_states)
-                print(loss)
+                if step % config_data.display == 0:
+                    print("pre-train loss at step {}: {}".format(step, loss))
                 loss.backward()
                 pre_train_critic_optimizer.step()  # run one optimizer step
+                step += 1
                 # assert 1 == 0
 
     def rl_training():
-        print("start actor critic training...")
-        for i in range(config_data.num_epochs):
+        print("start actor-critic training...")
+        step = 0
+        for i in range(config_data.rl_epochs):
             data_iterator.switch_to_train_data()
             for batch in data_iterator:
                 mle_loss = actor(batch, mode="pre-train")
@@ -446,7 +448,10 @@ def _main():
                 rl_critic_optimizer.step()
                 # reward = compute_bleu(sampled_ids, batch['target_text_ids'], eos_token_id=actor.eos_token_id)  #
                 # len_bsz print("into critic")
-
+                if step % config_data.display == 0:
+                    print("actor critic step {} \n: actor: rl_loss: {} mle_loss {}\n"
+                          "critic loss: {}".format(step, rl_loss, mle_loss, critic_loss))
+                step += 1
                 _delay_update_params()
 
     def _delay_update_params(initial=False):
