@@ -306,12 +306,15 @@ def _main():
 
     actor = Seq2SeqAttnActor(train_data)
     critic = Critic(train_data)
-
-    # actor.to(device)
-    # critic.to(device)
+  
 
     delay_actor = Seq2SeqAttnActor(train_data)
     delay_critic = Critic(train_data)
+    actor.to(device)
+    critic.to(device)
+    delay_actor.to(device)
+    delay_critic.to(device)
+
 
     for params in delay_critic.parameters():
         params.requires_grad = False
