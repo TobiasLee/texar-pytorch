@@ -11,7 +11,7 @@ fi_critic = 1e-3
 fi_actor = 1e-3
 
 train = {
-    'batch_size': 32,
+    'batch_size': 64,
     'allow_smaller_final_batch': False,
     'source_dataset': {
         "files": 'data/iwslt14/train.de',
@@ -24,7 +24,7 @@ train = {
 }
 
 val = {
-    'batch_size': 32,
+    'batch_size': 64,
     'shuffle': False,
     'source_dataset': {
         "files": 'data/iwslt14/valid.de',
@@ -37,7 +37,7 @@ val = {
 }
 
 test = {
-    'batch_size': 32,
+    'batch_size': 64,
     'shuffle': False,
     'source_dataset': {
         "files": 'data/iwslt14/test.de',
