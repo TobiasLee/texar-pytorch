@@ -19,6 +19,7 @@ import importlib
 
 import torch
 import torch.nn as nn
+import os
 
 import texar.torch as tx
 
@@ -29,6 +30,16 @@ parser.add_argument(
 parser.add_argument(
     '--config-data', type=str, default="config_iwslt14",
     help="The dataset config.")
+
+parser.add_argument(
+    '--output-dir', type=str, default="./checkpoints/",
+    help="The checkpoints save directory.")
+
+parser.add_argument(
+    '--output-model', type=str, default="best-model.ckpt",
+    help="The model name of best results.")
+
+
 args = parser.parse_args()
 
 config_model = importlib.import_module(args.config_model)
@@ -161,13 +172,24 @@ def main():
             list_of_references=refs, hypotheses=hypos)
 
     best_val_bleu = -1.
+
     for i in range(config_data.num_epochs):
         _train_epoch()
 
         val_bleu = _eval_epoch('val')
-        best_val_bleu = max(best_val_bleu, val_bleu)
         print('val epoch={}, BLEU={:.4f}; best-ever={:.4f}'.format(
             i, val_bleu, best_val_bleu))
+
+        if val_bleu > best_val_bleu:
+
+            model_path = os.path.join(args.output_dir, args.output_model)
+            os.makedirs(model_path)
+            print(f"Saving model to {model_path}")
+            states = {
+                "model": model.state_dict(),
+            }
+            torch.save(states, model_path)
+        best_val_bleu = max(best_val_bleu, val_bleu)
 
         test_bleu = _eval_epoch('test')
         print('test epoch={}, BLEU={:.4f}'.format(i, test_bleu))

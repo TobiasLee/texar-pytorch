@@ -1,10 +1,16 @@
-num_epochs = 4
-display = 50
-lambda_ll = 0.1
-fi_critic = 1e-3
-fi_actor = 1e-3
+
 source_vocab_file = './data/toy_copy/train/vocab.sources.txt'
 target_vocab_file = './data/toy_copy/train/vocab.targets.txt'
+
+pre_train_num_epochs = 5
+rl_epochs = 10
+
+
+display = 50
+lambda_ll = 0.1
+
+fi_critic = 1e-3
+fi_actor = 1e-3
 
 train = {
     'batch_size': 32,

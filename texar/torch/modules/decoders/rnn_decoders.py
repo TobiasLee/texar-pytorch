@@ -565,7 +565,7 @@ class AttentionRNNDecoder(RNNDecoderBase[AttentionWrapperState,
         return initial_finished, initial_inputs, state
 
     def step(self, helper: Helper, time: int,
-             inputs: torch.Tensor, state: Optional[AttentionWrapperState]) -> \
+             inputs: torch.Tensor, state: Optional[AttentionWrapperState], require_logits=False) -> \
             Tuple[AttentionRNNDecoderOutput, AttentionWrapperState,
                   torch.Tensor, torch.ByteTensor]:
         wrapper_outputs, wrapper_state = self._cell(
@@ -583,8 +583,10 @@ class AttentionRNNDecoder(RNNDecoderBase[AttentionWrapperState,
             logits, sample_ids, wrapper_outputs,
             attention_scores, attention_context)
         next_state = wrapper_state
-
-        return outputs, next_state, next_inputs, finished
+        return_list = [outputs, next_state, next_inputs, finished]
+        if require_logits:
+            return_list.append(logits)
+        return return_list
 
     def forward(  # type: ignore
             self,
@@ -598,10 +600,14 @@ class AttentionRNNDecoder(RNNDecoderBase[AttentionWrapperState,
             impute_finished: bool = False,
             infer_mode: Optional[bool] = None,
             beam_width: Optional[int] = None,
-            length_penalty: float = 0., **kwargs) \
-            -> Union[Tuple[AttentionRNNDecoderOutput,
-                           Optional[AttentionWrapperState], torch.LongTensor],
-                     Dict[str, torch.Tensor]]:
+            length_penalty: float = 0.,
+            require_state: bool = False,
+            **kwargs,
+    ):
+        # \
+        #     -> Union[Tuple[AttentionRNNDecoderOutput,
+        #                    Optional[AttentionWrapperState], torch.LongTensor],
+        #              Dict[str, torch.Tensor]]:
         r"""Performs decoding.
 
         Implementation calls initialize() once and step() repeatedly on the
@@ -700,7 +706,7 @@ class AttentionRNNDecoder(RNNDecoderBase[AttentionWrapperState,
             if max_decoding_length is None:
                 max_decoding_length = utils.MAX_SEQ_LENGTH
 
-        # Beam search decode
+        # Beam search decode, directly return the samples id and beam prob
         if beam_width is not None and beam_width > 1:
             if helper is not None:
                 raise ValueError("Must not set 'beam_width' and 'helper' "
@@ -747,10 +753,16 @@ class AttentionRNNDecoder(RNNDecoderBase[AttentionWrapperState,
         # Initial state
         self._cell.init_batch()
 
-        (outputs, final_state,
-         sequence_lengths) = self.dynamic_decode(  # type: ignore
-            helper, inputs, sequence_length, initial_state,
-            max_decoding_length, impute_finished)
+        if require_state:
+            (outputs, final_state,
+             sequence_lengths, states) = self.dynamic_decode(  # type: ignore
+                helper, inputs, sequence_length, initial_state,
+                max_decoding_length, impute_finished, require_state=require_state)
+        else:
+            (outputs, final_state,
+             sequence_lengths) = self.dynamic_decode(  # type: ignore
+                helper, inputs, sequence_length, initial_state,
+                max_decoding_length, impute_finished)
 
         # Release memory and memory_sequence_length in AttentionRNNDecoder
         self.memory = None
@@ -759,8 +771,10 @@ class AttentionRNNDecoder(RNNDecoderBase[AttentionWrapperState,
         # Release the cached memory in AttentionMechanism
         for attention_mechanism in self._cell.attention_mechanisms:
             attention_mechanism.clear_cache()
-
-        return outputs, final_state, sequence_lengths
+        return_list = [outputs, final_state, sequence_lengths]
+        if require_state:
+            return_list.append(states)
+        return return_list
 
     def beam_decode(self,
                     start_tokens: torch.LongTensor,

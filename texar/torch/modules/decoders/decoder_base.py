@@ -375,8 +375,9 @@ class DecoderBase(ModuleBase, Generic[State, Output], ABC):
                        initial_state: Optional[State],
                        max_decoding_length: Optional[int] = None,
                        impute_finished: bool = False,
-                       step_hook: Optional[Callable[[int], None]] = None) \
-            -> Tuple[Output, Optional[State], torch.LongTensor]:
+                       step_hook: Optional[Callable[[int], None]] = None,
+                       require_state: bool = False):
+        # \-> Tuple[Output, Optional[State], torch.LongTensor]:
         r"""Generic routine for dynamic decoding. Please check the
         `documentation
         <https://www.tensorflow.org/api_docs/python/tf/contrib/seq2seq/dynamic_decode>`_
@@ -402,11 +403,11 @@ class DecoderBase(ModuleBase, Generic[State, Output], ABC):
         time = 0
 
         outputs = []
-
+        states = []
         while (not torch.all(finished).item() and
                (max_decoding_length is None or time < max_decoding_length)):
             (next_outputs, decoder_state, next_inputs,
-             decoder_finished) = self.step(helper, time, step_inputs, state)
+                 decoder_finished) = self.step(helper, time, step_inputs, state)
 
             if getattr(self, 'tracks_own_finished', False):
                 next_finished = decoder_finished
@@ -426,6 +427,8 @@ class DecoderBase(ModuleBase, Generic[State, Output], ABC):
                 next_state = decoder_state
 
             outputs.append(emit)
+            if require_state:
+                states.append(next_state)
             sequence_lengths.index_fill_(
                 dim=0, value=time + 1,
                 index=torch.nonzero((~finished).long()).flatten())
@@ -453,8 +456,12 @@ class DecoderBase(ModuleBase, Generic[State, Output], ABC):
             final_outputs = utils.map_structure(
                 lambda x: x.transpose(0, 1) if x.dim() >= 2 else x,
                 final_outputs)
+        return_list = [final_outputs, final_state, final_sequence_lengths]
+        if require_state:
+            return_list.append(states)
+        # print(max_decoding_length)
 
-        return final_outputs, final_state, final_sequence_lengths
+        return return_list
 
     @abstractmethod
     def initialize(self, helper: Helper, inputs: Optional[torch.Tensor],

@@ -157,6 +157,7 @@ class Seq2SeqAttnActor(nn.Module):
         else:
             raise ValueError("unsupported mode")
 
+
 class Critic(nn.Module):
     """Critic model to guide the actor. Indeed, it is also a encoder-decoder.
     Q(s_t, a_t)
@@ -306,7 +307,6 @@ def _main():
 
     actor = Seq2SeqAttnActor(train_data)
     critic = Critic(train_data)
-  
 
     delay_actor = Seq2SeqAttnActor(train_data)
     delay_critic = Critic(train_data)
@@ -314,7 +314,6 @@ def _main():
     critic.to(device)
     delay_actor.to(device)
     delay_critic.to(device)
-
 
     for params in delay_critic.parameters():
         params.requires_grad = False
@@ -468,7 +467,6 @@ def _main():
         d_p.data.copy_(p.data)
     for d_p, p in zip(delay_actor.parameters(), actor.parameters()):
         d_p.data.copy_(p.data)
-
 
     pre_train_actor()
     # copy params
