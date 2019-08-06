@@ -24,6 +24,7 @@ import texar.torch as tx
 import os
 import copy
 from nltk.translate.bleu_score import sentence_bleu
+from tqdm import tqdm
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -31,6 +32,12 @@ parser.add_argument(
     help="The model config.")
 parser.add_argument(
     '--config-data', type=str, default="config_ac",
+    help="The dataset config.")
+# parser.add_argument(
+#     '--output-model', type=str, default="actor",
+#     help="The model name of pre-trained actor.")
+parser.add_argument(
+    '--output-dir', type=str, default="./models/",
     help="The dataset config.")
 args = parser.parse_args()
 
@@ -150,7 +157,7 @@ class Seq2SeqAttnActor(nn.Module):
                 memory=memory,
                 memory_sequence_length=batch['source_length'],
                 require_state=True,
-                max_decoding_length=60)
+                max_decoding_length=config_data.max_decoding_len)
 
             # logits is contained in the outputs
             return infer_outputs, decoder_states
@@ -196,12 +203,11 @@ class Critic(nn.Module):
         self.tanh = nn.Tanh()
         self.mse_loss = nn.MSELoss()
 
-    def forward(self, batch, sampled_id, reward=None, actor_states=None, mode='pre-train',
+    def forward(self, batch, sampled_id, logits=None, reward=None, actor_states=None, mode='pre-train',
                 target_actor=None, target_critic=None, regularization=True, lambda_c=1e-3):
         """
         input: generated token index
         output:  score distribution over vocabulary
-        draft version: we only take the generated token into reward computation,
         """
         enc_outputs, _ = self.encoder(
             inputs=self.source_embedder(batch['source_text_ids']),
@@ -221,13 +227,12 @@ class Critic(nn.Module):
                 helper=helper_train,
                 inputs=sampled_id,  # batch_size, len
                 sequence_length=sample_len,
-                require_state=True)
+                require_state=True,
+                max_decoding_length=config_data.max_decoding_len)
             # print(states)
-            actor_states = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
+            # actor_states = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
             states = torch.stack([s.cell_state[0] for s in states], dim=0)  # len, bsz, hidden_size
             # print(states)
-            # print(actor_states)
-            # concat states : to take the decoder(actor) state into consideration
             concat_states = torch.cat((states, actor_states), dim=-1)  # len, bsz, hid_sz *2
             vocab_scores = self.score_mapping(concat_states)  # len, bsz, vocab_size
             seq_len, bsz, _ = vocab_scores.size()
@@ -237,30 +242,21 @@ class Critic(nn.Module):
             for i in range(bsz):
                 for j in range(seq_len):
                     predicted_scores.append(vocab_scores[i][j][sampled_id[i][j]])
-            # print(index_to_select.size())
-
-            # predicted_scores = torch.index_select(predicted_scores, 1, index_to_select)
-            #     # predicted_scores.index_select(dim=1, index=index_to_select)  # bsz, len
-            # print(predicted_scores.size())
-            print(len(predicted_scores))
 
             predicted_scores = torch.stack(predicted_scores, dim=0).view(bsz, -1)
-            # predicted_scores.requires_grad = True
             # qt = reward + p'(Y,1:t)  * q'
-            actor_outputs, actor_states = target_actor(batch, mode='pre-train-critic')
-
-            logits = actor_outputs.logits  # bsz, len, vocab_size
+            # actor_outputs, actor_states_t = target_actor(batch, mode='pre-train-critic')
 
             prob = torch.softmax(logits, dim=-1)  # bsz, len, vocab_size
+            # actor_states_t = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
 
             q_score = target_critic(batch, sampled_id, mode='get_scores',
                                     actor_states=actor_states)  # bsz, len, vocab_size
 
-            expectation = torch.sum(prob.detach() * q_score.detach(), dim=-1)  # bsz, len
+            expectation = torch.sum(prob * q_score, dim=-1)  # bsz, len
             # seems that expectation and reward both have problem (detach() ? )
             qt = reward.detach() + expectation.detach()
 
-            # print(predicted_scores.requires_grad)
             loss = self.mse_loss(qt, predicted_scores)
             if regularization:
                 minus_average = predicted_scores - torch.mean(predicted_scores, dim=1, keepdim=True)
@@ -277,14 +273,10 @@ class Critic(nn.Module):
                 helper=helper_train,
                 inputs=sampled_id,
                 sequence_length=sample_len,
-                require_state=True)
+                require_state=True,
+                max_decoding_length=config_data.max_decoding_len)
 
             states = torch.stack([s.cell_state[0] for s in states], dim=0)  # len, bsz, hidden_size
-            # concat states ? to get
-            # print(states)
-            # print(actor_states)
-
-            actor_states = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
             concat_states = torch.cat((states, actor_states), dim=-1)  # len, bsz, hid_sz *2
             vocab_scores = self.score_mapping(concat_states)  # len, bsz, vocab_size
             vocab_scores = self.tanh(vocab_scores)  # len, bsz, vocab_size
@@ -331,13 +323,17 @@ def _main():
         data_iterator.switch_to_train_data()
         actor.train()
 
-        step = 0
-        for batch in data_iterator:
+        step = 1
+        total_loss = 0.0
+        t = tqdm(data_iterator.get_train_iterator())
+        for batch in t:
             loss = actor(batch, mode="pre-train")
             loss.backward()
             mle_actor_train_op()
-            if step % config_data.display == 0:
-                print("step={}, loss={:.4f}".format(step, loss))
+            total_loss += loss
+            t.set_description("step={}, avg loss={:.4f}".format(step, total_loss / step))
+            # if step % config_data.display == 0:
+            #     print("step={}, loss={:.4f}".format(step, loss))
             step += 1
 
     @torch.no_grad()
@@ -371,19 +367,19 @@ def _main():
             _mle_actor_train_epoch()
 
             val_bleu = _actor_mle_eval_epoch('val')
-            best_val_bleu = max(best_val_bleu, val_bleu)
             print('val epoch={}, BLEU={:.4f}; best-ever={:.4f}'.format(
                 i, val_bleu, best_val_bleu))
 
             if val_bleu > best_val_bleu:
-                model_path = os.path.join(args.output_dir, args.output_model)
+                best_val_bleu = max(best_val_bleu, val_bleu)
+                model_path = os.path.join(args.output_dir, "actor-pre-train-best")
                 os.makedirs(model_path, exist_ok=True)
                 print(f"Saving model to {model_path}")
                 states = {
                     "model": actor.state_dict(),
                     # anything else?
                 }
-                torch.save(states, model_path)
+                torch.save(states, model_path + "/model.ckpt")
             best_val_bleu = max(best_val_bleu, val_bleu)
 
             test_bleu = _actor_mle_eval_epoch('test')
@@ -398,7 +394,7 @@ def _main():
             data_iterator.switch_to_train_data()
             actor.eval()
             for batch in data_iterator:
-                actor_outputs, actor_states = actor(batch, mode='pre-train-critic')
+                actor_outputs, actor_states = delay_actor(batch, mode='pre-train-critic')
                 # need to know what actor_outputs look lie
                 logits = actor_outputs.logits  # bsz, len, vocab_size
                 # print(logits.size())  # batch_size x max_len x vocab_size
@@ -409,8 +405,9 @@ def _main():
                 # print("into critic")
                 pre_train_critic_optimizer.zero_grad()
 
-                loss = critic(batch, sampled_ids, reward=reward, target_actor=delay_actor,
+                loss = critic(batch, sampled_ids, logits=logits, reward=reward, target_actor=delay_actor,
                               target_critic=delay_critic, actor_states=actor_states)
+
                 if step % config_data.display == 0:
                     print("pre-train loss at step {}: {}".format(step, loss))
                 loss.backward()
@@ -421,9 +418,12 @@ def _main():
     def rl_training():
         print("start actor-critic training...")
         step = 0
+        actor.train()
+        critic.train()
         for i in range(config_data.rl_epochs):
             data_iterator.switch_to_train_data()
             for batch in data_iterator:
+                #### actor step ####
                 mle_loss = actor(batch, mode="pre-train")
                 actor_outputs, actor_states = actor(batch, mode='pre-train-critic')
                 # need to know what actor_outputs look lie
@@ -432,7 +432,7 @@ def _main():
                 # critic_initial_state = critic.
                 sampled_ids = torch.argmax(logits, dim=-1)  # bsz, len
                 reward = compute_bleu(sampled_ids, batch['target_text_ids'], eos_token_id=actor.eos_token_id)  # len_bsz
-
+                actor_states = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
                 q_score = critic(batch, sampled_ids, mode='get_scores',
                                  actor_states=actor_states)  # bsz, len, vocab_size
                 rl_loss = torch.sum(torch.sum(logits * q_score))
@@ -441,11 +441,20 @@ def _main():
                 rl_actor_optimizer.zero_grad()
                 total_loss.backward(retain_graph=True)
                 rl_actor_optimizer.step()
+                #### critic step ####
 
-                critic_loss = critic(batch, sampled_ids, reward=reward, target_actor=delay_actor,
-                                     target_critic=delay_critic, actor_states=actor_states)
-
+                actor_outputs, actor_states = delay_actor(batch, mode='pre-train-critic')
+                logits = actor_outputs.logits  # bsz, len, vocab_size
+                # print(logits.size())  # batch_size x max_len x vocab_size
+                actor_states = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
+                # critic_initial_state = critic.
+                sampled_ids = torch.argmax(logits, dim=-1)  # bsz, len
+                reward = compute_bleu(sampled_ids, batch['target_text_ids'], eos_token_id=actor.eos_token_id)  # len_bsz
+                # print("into critic")
                 rl_critic_optimizer.zero_grad()
+
+                critic_loss = critic(batch, sampled_ids, logits=logits, reward=reward, target_actor=delay_actor,
+                                     target_critic=delay_critic, actor_states=actor_states)
                 critic_loss.backward()
                 rl_critic_optimizer.step()
                 # reward = compute_bleu(sampled_ids, batch['target_text_ids'], eos_token_id=actor.eos_token_id)  #
@@ -456,21 +465,24 @@ def _main():
                 step += 1
                 _delay_update_params()
 
-    def _delay_update_params(initial=False):
+    def _delay_update_params():
 
         for d_p, p in zip(delay_critic.parameters(), critic.parameters()):
             d_p.data.copy_(config_data.fi_critic * p.data + d_p.data)
         for d_p, p in zip(delay_actor.parameters(), actor.parameters()):
             d_p.data.copy_(config_data.fi_actor * p.data + d_p.data)
 
+    # actor.load_state_dict(torch.load("./models/actor-pre-train-best/model.ckpt")["model"])
+    pre_train_actor()
+    # copy params
     for d_p, p in zip(delay_critic.parameters(), critic.parameters()):
         d_p.data.copy_(p.data)
     for d_p, p in zip(delay_actor.parameters(), actor.parameters()):
         d_p.data.copy_(p.data)
 
-    pre_train_actor()
-    # copy params
     pre_train_critic()
+    model_path = os.path.join(args.output_dir, "critic-pre-train")
+    torch.save(critic.state_dict(), model_path + "/critic.ckpt")
     # copy  params
     rl_training()
 

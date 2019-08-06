@@ -1,6 +1,7 @@
 pre_train_num_epochs = 15
 rl_epochs = 10
 
+max_decoding_len = 60
 
 display = 50
 lambda_ll = 0.1
