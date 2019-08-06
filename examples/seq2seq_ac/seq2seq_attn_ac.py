@@ -482,6 +482,7 @@ def _main():
 
     pre_train_critic()
     model_path = os.path.join(args.output_dir, "critic-pre-train")
+    os.makedirs(model_path, exist_ok=True)
     torch.save(critic.state_dict(), model_path + "/critic.ckpt")
     # copy  params
     rl_training()
