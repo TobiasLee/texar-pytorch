@@ -1,4 +1,6 @@
-pre_train_num_epochs = 15
+pre_train_actor_epochs = 15
+pre_train_critic_epochs = 5
+save_interval = 1000 # save critic every 1000 step, almost one epoch
 rl_epochs = 10
 
 max_decoding_len = 60

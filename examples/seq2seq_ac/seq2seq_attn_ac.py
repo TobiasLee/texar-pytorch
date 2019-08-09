@@ -362,7 +362,7 @@ def _main():
 
     def pre_train_actor():
         best_val_bleu = -1.
-        for i in range(config_data.pre_train_num_epochs):
+        for i in range(config_data.pre_train_actor_epochs):
             _mle_actor_train_epoch()
 
             val_bleu = _actor_mle_eval_epoch('val')
@@ -388,13 +388,13 @@ def _main():
         print("pre-train actor finished...")
 
     def pre_train_critic():
-        step = 0
-        for i in range(config_data.pre_train_num_epochs):
+        step = 1
+        total_loss = 0.0
+        for i in range(config_data.pre_train_critic_epochs):
             data_iterator.switch_to_train_data()
             actor.eval()
             t = tqdm(data_iterator.get_train_iterator())
-            step = 1
-            total_loss = 0.0
+
             for batch in t:
                 actor_outputs, actor_states = delay_actor(batch, mode='pre-train-critic')
                 # need to know what actor_outputs look lie
@@ -410,14 +410,23 @@ def _main():
                 loss = critic(batch, sampled_ids, logits=logits, reward=reward, target_actor=delay_actor,
                               target_critic=delay_critic, actor_states=actor_states)
                 total_loss += loss
-
                 t.set_description("step={}, avg loss={:.4f}".format(step, total_loss / step))
             #    if step % config_data.display == 0:
             #        print("pre-train loss at step {}: {}".format(step, loss))
                 loss.backward()
                 pre_train_critic_optimizer.step()  # run one optimizer step
                 step += 1
-                # assert 1 == 0
+                if step % config_data.save_interval == 0:
+                    model_path = os.path.join(args.output_dir, "critic-pre-train")
+                    os.makedirs(model_path, exist_ok=True)
+                    print(f"Saving model to {model_path}")
+                    torch.save(critic.state_dict(), model_path + "/critic-{}.ckpt".format(step))
+                # update target critic
+                for d_p, p in zip(delay_critic.parameters(), critic.parameters()):
+                    d_p.data.copy_(config_data.fi_critic * p.data + d_p.data)
+
+        print(f"Pretrain finished, saving model")
+        torch.save(critic.state_dict(), model_path + "/critic-final.ckpt")
 
     def rl_training():
         print("start actor-critic training...")
