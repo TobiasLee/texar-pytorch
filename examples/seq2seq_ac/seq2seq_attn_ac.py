@@ -53,7 +53,6 @@ def compute_bleu(sampled_ids, target_ids, eos_token_id):
     target_ids = target_ids.cpu()  # bsz, len
     removed = [list(t) for t in target_ids]
     removed = [t[1:t.index(eos_token_id)] for t in removed]  # remove sos and eos
-    # 怎么搞出 bleu 的 Tensor，就地操作是官方不推荐的 -> 改用 list + stack, 这个操作一般比较稳妥
     bleus = []
     # sampled_ids, dtype=torch.float32, requires_grad=True)
     for i in range(1, len(output_ids[0]) + 1):  # max_len
@@ -69,7 +68,7 @@ def compute_bleu(sampled_ids, target_ids, eos_token_id):
             bleus.append(torch.Tensor(ps) - bleus[i - 2])  # Temporal difference
     bleus = torch.stack(bleus, dim=0)
 
-    return bleus.transpose(1, 0).contiguous()
+    return bleus.transpose(1, 0).contiguous().to(device)
 
 
 class Seq2SeqAttnActor(nn.Module):
@@ -143,6 +142,7 @@ class Seq2SeqAttnActor(nn.Module):
         elif mode == 'pre-train-critic':  # rl training mode
             # with torch.no_grad():  # fix ?
             # we need the inner probability distribution of generated token
+            # print("in actor pretrain")
             start_tokens = memory.new_full(
                 batch['target_length'].size(), self.bos_token_id,
                 dtype=torch.int64)
@@ -150,7 +150,7 @@ class Seq2SeqAttnActor(nn.Module):
                 decoding_strategy="infer_greedy",
                 start_tokens=start_tokens,
                 end_token=self.eos_token_id.item())
-            infer_outputs, _, _, decoder_states = self.decoder(
+            infer_outputs, _, _, decoder_states  = self.decoder(
                 start_tokens=start_tokens,
                 helper=helper_infer,
                 end_token=self.eos_token_id.item(),
@@ -158,7 +158,6 @@ class Seq2SeqAttnActor(nn.Module):
                 memory_sequence_length=batch['source_length'],
                 require_state=True,
                 max_decoding_length=config_data.max_decoding_len)
-
             # logits is contained in the outputs
             return infer_outputs, decoder_states
         else:
@@ -302,6 +301,7 @@ def _main():
 
     delay_actor = Seq2SeqAttnActor(train_data)
     delay_critic = Critic(train_data)
+
     actor.to(device)
     critic.to(device)
     delay_actor.to(device)
@@ -322,7 +322,6 @@ def _main():
     def _mle_actor_train_epoch():
         data_iterator.switch_to_train_data()
         actor.train()
-
         step = 1
         total_loss = 0.0
         t = tqdm(data_iterator.get_train_iterator())
@@ -393,7 +392,10 @@ def _main():
         for i in range(config_data.pre_train_num_epochs):
             data_iterator.switch_to_train_data()
             actor.eval()
-            for batch in data_iterator:
+            t = tqdm(data_iterator.get_train_iterator())
+            step = 1
+            total_loss = 0.0
+            for batch in t:
                 actor_outputs, actor_states = delay_actor(batch, mode='pre-train-critic')
                 # need to know what actor_outputs look lie
                 logits = actor_outputs.logits  # bsz, len, vocab_size
@@ -407,9 +409,11 @@ def _main():
 
                 loss = critic(batch, sampled_ids, logits=logits, reward=reward, target_actor=delay_actor,
                               target_critic=delay_critic, actor_states=actor_states)
+                total_loss += loss
 
-                if step % config_data.display == 0:
-                    print("pre-train loss at step {}: {}".format(step, loss))
+                t.set_description("step={}, avg loss={:.4f}".format(step, total_loss / step))
+            #    if step % config_data.display == 0:
+            #        print("pre-train loss at step {}: {}".format(step, loss))
                 loss.backward()
                 pre_train_critic_optimizer.step()  # run one optimizer step
                 step += 1
@@ -471,10 +475,12 @@ def _main():
             d_p.data.copy_(config_data.fi_critic * p.data + d_p.data)
         for d_p, p in zip(delay_actor.parameters(), actor.parameters()):
             d_p.data.copy_(config_data.fi_actor * p.data + d_p.data)
-
-    # actor.load_state_dict(torch.load("./models/actor-pre-train-best/model.ckpt")["model"])
-    pre_train_actor()
+    print("loading pretrained actor")
+    actor.load_state_dict(torch.load("./models/actor-pre-train-best/model.ckpt")["model"])
+    print("load successfully!")
+#    pre_train_actor()
     # copy params
+    #print(_actor_mle_eval_epoch('test'))
     for d_p, p in zip(delay_critic.parameters(), critic.parameters()):
         d_p.data.copy_(p.data)
     for d_p, p in zip(delay_actor.parameters(), actor.parameters()):
