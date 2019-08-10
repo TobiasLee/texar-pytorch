@@ -448,8 +448,8 @@ def _main():
                 actor_states = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
                 q_score = critic(batch, sampled_ids, mode='get_scores',
                                  actor_states=actor_states)  # bsz, len, vocab_size
-                rl_loss = torch.sum(torch.sum(logits * q_score))
-                total_loss = config_data.lambda_ll * mle_loss + rl_loss
+                rl_loss = - torch.sum(torch.mean(logits * q_score))
+                total_loss = config_data.lambda_ll * mle_loss + config_data.lambda_rl * rl_loss
 
                 rl_actor_optimizer.zero_grad()
                 total_loss.backward(retain_graph=True)
@@ -473,7 +473,7 @@ def _main():
                 # reward = compute_bleu(sampled_ids, batch['target_text_ids'], eos_token_id=actor.eos_token_id)  #
                 # len_bsz print("into critic")
                 if step % config_data.display == 0:
-                    print("actor critic step {} \n: actor: rl_loss: {} mle_loss {}\n"
+                    print("actor critic step {}: \n actor: rl_loss: {} mle_loss {}\n"
                           "critic loss: {}".format(step, rl_loss, mle_loss, critic_loss))
                 step += 1
                 _delay_update_params()
@@ -490,15 +490,19 @@ def _main():
 #    pre_train_actor()
     # copy params
     #print(_actor_mle_eval_epoch('test'))
+    print("loading pretrained critic")
+    critic.load_state_dict(torch.load("./models/critic-pre-train/critic-final.ckpt"))
+    print("load successfully!")
+    
     for d_p, p in zip(delay_critic.parameters(), critic.parameters()):
         d_p.data.copy_(p.data)
     for d_p, p in zip(delay_actor.parameters(), actor.parameters()):
         d_p.data.copy_(p.data)
 
-    pre_train_critic()
-    model_path = os.path.join(args.output_dir, "critic-pre-train")
-    os.makedirs(model_path, exist_ok=True)
-    torch.save(critic.state_dict(), model_path + "/critic.ckpt")
+#    pre_train_critic()
+#    model_path = os.path.join(args.output_dir, "critic-pre-train")
+#    os.makedirs(model_path, exist_ok=True)
+#    torch.save(critic.state_dict(), model_path + "/critic.ckpt")
     # copy  params
     rl_training()
 
