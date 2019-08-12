@@ -39,10 +39,23 @@ parser.add_argument(
 parser.add_argument(
     '--output-dir', type=str, default="./models/",
     help="The dataset config.")
+parser.add_argument(
+    '--lambda_ll', type=float, default=1.0,
+    help="The coefficient of likelihood training loss.")
+parser.add_argument(
+    '--lambda_rl', type=float, default=1.0,
+    help="The coefficient of rl training loss.")
+
+
 args = parser.parse_args()
 
 config_model = importlib.import_module(args.config_model)
 config_data = importlib.import_module(args.config_data)
+
+config_data.lambda_ll = args.lambda_ll
+config_data.lambda_rl = args.lambda_rl
+print("mle: {} ll : {}".format(config_data.lambda_ll, config_data.lambda_rl))
+
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
