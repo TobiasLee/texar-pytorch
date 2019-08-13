@@ -452,15 +452,12 @@ def _main():
                 #### actor step ####
                 mle_loss = actor(batch, mode="pre-train")
                 actor_outputs, actor_states = actor(batch, mode='pre-train-critic')
-                # need to know what actor_outputs look lie
                 logits = actor_outputs.logits  # bsz, len, vocab_size
-                # print(logits.size())  # batch_size x max_len x vocab_size
-                # critic_initial_state = critic.
                 sampled_ids = torch.argmax(logits, dim=-1)  # bsz, len
-                reward = compute_bleu(sampled_ids, batch['target_text_ids'], eos_token_id=actor.eos_token_id)  # len_bsz
                 actor_states = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
                 q_score = critic(batch, sampled_ids, mode='get_scores',
                                  actor_states=actor_states)  # bsz, len, vocab_size
+                # need mask ?
                 rl_loss = - torch.sum(torch.mean(logits * q_score))
                 total_loss = config_data.lambda_ll * mle_loss + config_data.lambda_rl * rl_loss
 
@@ -471,12 +468,9 @@ def _main():
 
                 actor_outputs, actor_states = delay_actor(batch, mode='pre-train-critic')
                 logits = actor_outputs.logits  # bsz, len, vocab_size
-                # print(logits.size())  # batch_size x max_len x vocab_size
                 actor_states = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
-                # critic_initial_state = critic.
                 sampled_ids = torch.argmax(logits, dim=-1)  # bsz, len
                 reward = compute_bleu(sampled_ids, batch['target_text_ids'], eos_token_id=actor.eos_token_id)  # len_bsz
-                # print("into critic")
                 rl_critic_optimizer.zero_grad()
 
                 critic_loss = critic(batch, sampled_ids, logits=logits, reward=reward, target_actor=delay_actor,
