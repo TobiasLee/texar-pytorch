@@ -180,25 +180,26 @@ class Seq2SeqAttnActor(nn.Module):
 class Critic(nn.Module):
     """Critic model to guide the actor. Indeed, it is also a encoder-decoder.
     Q(s_t, a_t)
+    note that we only need target information as auxiliary information
     """
 
     def __init__(self, train_data):
         super().__init__()
-        self.source_vocab_size = train_data.source_vocab.size
+        # self.source_vocab_size = train_data.source_vocab.size
         self.target_vocab_size = train_data.target_vocab.size
         self.bos_token_id = train_data.target_vocab.bos_token_id
         self.eos_token_id = train_data.target_vocab.eos_token_id
-
-        self.source_embedder = tx.modules.WordEmbedder(
-            vocab_size=self.source_vocab_size,
-            hparams=config_model.embedder)
+        #
+        # self.source_embedder = tx.modules.WordEmbedder(
+        #     vocab_size=self.source_vocab_size,
+        #     hparams=config_model.embedder)
 
         self.target_embedder = tx.modules.WordEmbedder(
             vocab_size=self.target_vocab_size,
             hparams=config_model.embedder)
 
         self.encoder = tx.modules.BidirectionalRNNEncoder(
-            input_size=self.source_embedder.dim,
+            input_size=self.target_embedder.dim,
             hparams=config_model.encoder)
 
         self.decoder = tx.modules.AttentionRNNDecoder(
@@ -222,8 +223,8 @@ class Critic(nn.Module):
         output:  score distribution over vocabulary
         """
         enc_outputs, _ = self.encoder(
-            inputs=self.source_embedder(batch['source_text_ids']),
-            sequence_length=batch['source_length'])
+            inputs=self.target_embedder(batch['target_text_ids']),
+            sequence_length=batch['target_length'])
 
         memory = torch.cat(enc_outputs, dim=2)
         self.decoder.memory = memory
@@ -281,7 +282,7 @@ class Critic(nn.Module):
             sample_len = torch.Tensor([torch.sum(sent.ne(0)) for sent in sampled_id])
             outputs, _, _, states = self.decoder(
                 memory=memory,
-                memory_sequence_length=batch['source_length'],
+                memory_sequence_length=batch['target_length'],
                 helper=helper_train,
                 inputs=sampled_id,
                 sequence_length=sample_len,
@@ -497,16 +498,16 @@ def _main():
 #    pre_train_actor()
     # copy params
     #print(_actor_mle_eval_epoch('test'))
-    print("loading pretrained critic")
-    critic.load_state_dict(torch.load("./models/critic-pre-train/critic-final.ckpt"))
-    print("load successfully!")
+    # print("loading pretrained critic")
+    # critic.load_state_dict(torch.load("./models/critic-pre-train/critic-final.ckpt"))
+    # print("load successfully!")
     
     for d_p, p in zip(delay_critic.parameters(), critic.parameters()):
         d_p.data.copy_(p.data)
     for d_p, p in zip(delay_actor.parameters(), actor.parameters()):
         d_p.data.copy_(p.data)
 
-#    pre_train_critic()
+    pre_train_critic()
 #    model_path = os.path.join(args.output_dir, "critic-pre-train")
 #    os.makedirs(model_path, exist_ok=True)
 #    torch.save(critic.state_dict(), model_path + "/critic.ckpt")
