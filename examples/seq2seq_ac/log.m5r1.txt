@@ -1,0 +1,1440 @@
+mle: 5.0 ll : 1.0
+loading pretrained actor
+load successfully!
+loading pretrained critic
+load successfully!
+start actor-critic training...
+actor critic step 0: 
+ actor: rl_loss: 4.376993656158447 mle_loss 31.774194717407227
+critic loss: 7.179482054198161e-05
+start evaluating....
+valid bleu at step 0: 27.489999771118164
+actor critic step 10: 
+ actor: rl_loss: 3.1008718013763428 mle_loss 30.510183334350586
+critic loss: 2.565655086073093e-05
+actor critic step 20: 
+ actor: rl_loss: 2.5421531200408936 mle_loss 29.524005889892578
+critic loss: 7.027287210803479e-05
+actor critic step 30: 
+ actor: rl_loss: 1.5548948049545288 mle_loss 30.17055320739746
+critic loss: 2.426492574159056e-05
+actor critic step 40: 
+ actor: rl_loss: 0.6718841791152954 mle_loss 27.86386489868164
+critic loss: 2.7353169571142644e-05
+actor critic step 50: 
+ actor: rl_loss: 1.1806306838989258 mle_loss 32.069122314453125
+critic loss: 2.537610453146044e-05
+actor critic step 60: 
+ actor: rl_loss: 0.4931083619594574 mle_loss 24.88265609741211
+critic loss: 3.219478821847588e-05
+actor critic step 70: 
+ actor: rl_loss: -0.7745839357376099 mle_loss 26.35066032409668
+critic loss: 0.000423646328272298
+actor critic step 80: 
+ actor: rl_loss: -2.853454113006592 mle_loss 33.03858184814453
+critic loss: 1.1264430213486776e-05
+actor critic step 90: 
+ actor: rl_loss: -4.407290935516357 mle_loss 30.17898178100586
+critic loss: 0.0002450321917422116
+actor critic step 100: 
+ actor: rl_loss: -7.741033554077148 mle_loss 36.98876190185547
+critic loss: 0.0037484394852072
+start evaluating....
+valid bleu at step 100: 26.540000915527344
+actor critic step 110: 
+ actor: rl_loss: -11.121070861816406 mle_loss 25.27096939086914
+critic loss: 0.00016111919831018895
+actor critic step 120: 
+ actor: rl_loss: -17.46741485595703 mle_loss 31.032882690429688
+critic loss: 7.378570444416255e-05
+actor critic step 130: 
+ actor: rl_loss: -23.654199600219727 mle_loss 25.172569274902344
+critic loss: 0.00040153454756364226
+actor critic step 140: 
+ actor: rl_loss: -29.032520294189453 mle_loss 31.06512451171875
+critic loss: 3.9963437302503735e-05
+actor critic step 150: 
+ actor: rl_loss: -27.384523391723633 mle_loss 28.066974639892578
+critic loss: 0.0018285762052983046
+actor critic step 160: 
+ actor: rl_loss: -40.912593841552734 mle_loss 29.543441772460938
+critic loss: 5.3399726311909035e-05
+actor critic step 170: 
+ actor: rl_loss: -38.07584762573242 mle_loss 35.30873107910156
+critic loss: 0.00039642193587496877
+actor critic step 180: 
+ actor: rl_loss: -39.88246154785156 mle_loss 29.503498077392578
+critic loss: 0.0009563909261487424
+actor critic step 190: 
+ actor: rl_loss: -30.95703887939453 mle_loss 29.809839248657227
+critic loss: 1.1131109204143286e-05
+actor critic step 200: 
+ actor: rl_loss: -51.007957458496094 mle_loss 36.51215744018555
+critic loss: 1.2586739103426225e-05
+start evaluating....
+valid bleu at step 200: 22.510000228881836
+actor critic step 210: 
+ actor: rl_loss: -69.45572662353516 mle_loss 32.836238861083984
+critic loss: 0.001505357213318348
+actor critic step 220: 
+ actor: rl_loss: -67.87911224365234 mle_loss 38.749298095703125
+critic loss: 0.001997330691665411
+actor critic step 230: 
+ actor: rl_loss: -69.72026824951172 mle_loss 38.63748550415039
+critic loss: 3.6741577787324786e-05
+actor critic step 240: 
+ actor: rl_loss: -83.28266906738281 mle_loss 28.30365562438965
+critic loss: 8.191388587874826e-06
+actor critic step 250: 
+ actor: rl_loss: -105.88768005371094 mle_loss 31.038959503173828
+critic loss: 7.581074896734208e-06
+actor critic step 260: 
+ actor: rl_loss: -104.10176849365234 mle_loss 31.237516403198242
+critic loss: 0.0005513454088941216
+actor critic step 270: 
+ actor: rl_loss: -131.69970703125 mle_loss 40.56434631347656
+critic loss: 2.009503987210337e-06
+actor critic step 280: 
+ actor: rl_loss: -152.87158203125 mle_loss 27.930397033691406
+critic loss: 1.3935380593466107e-05
+actor critic step 290: 
+ actor: rl_loss: -139.9044647216797 mle_loss 44.20703125
+critic loss: 3.924858174286783e-05
+actor critic step 300: 
+ actor: rl_loss: -175.8592987060547 mle_loss 40.642547607421875
+critic loss: 9.60610941547202e-06
+start evaluating....
+valid bleu at step 300: 24.31999969482422
+actor critic step 310: 
+ actor: rl_loss: -160.4991455078125 mle_loss 30.300025939941406
+critic loss: 2.6182227884419262e-05
+actor critic step 320: 
+ actor: rl_loss: -237.41412353515625 mle_loss 28.39641571044922
+critic loss: 0.00011985438322881237
+actor critic step 330: 
+ actor: rl_loss: -204.891845703125 mle_loss 33.328758239746094
+critic loss: 0.0002951708738692105
+actor critic step 340: 
+ actor: rl_loss: -259.7364807128906 mle_loss 34.384254455566406
+critic loss: 0.0003393079387024045
+actor critic step 350: 
+ actor: rl_loss: -361.5832214355469 mle_loss 34.91090393066406
+critic loss: 0.00026404461823403835
+actor critic step 360: 
+ actor: rl_loss: -386.6639099121094 mle_loss 31.76753807067871
+critic loss: 0.0024421135894954205
+actor critic step 370: 
+ actor: rl_loss: -350.1194152832031 mle_loss 35.88511657714844
+critic loss: 0.00031234530615620315
+actor critic step 380: 
+ actor: rl_loss: -319.1033935546875 mle_loss 40.12814712524414
+critic loss: 0.0035770023241639137
+actor critic step 390: 
+ actor: rl_loss: -356.84454345703125 mle_loss 56.50204086303711
+critic loss: 0.0008191064698621631
+actor critic step 400: 
+ actor: rl_loss: -455.5753479003906 mle_loss 53.784385681152344
+critic loss: 0.01900741271674633
+start evaluating....
+valid bleu at step 400: 18.719999313354492
+actor critic step 410: 
+ actor: rl_loss: -436.0845031738281 mle_loss 79.55575561523438
+critic loss: 0.09337815642356873
+actor critic step 420: 
+ actor: rl_loss: -407.3031921386719 mle_loss 132.87242126464844
+critic loss: 0.013041786849498749
+actor critic step 430: 
+ actor: rl_loss: -470.1824951171875 mle_loss 106.00845336914062
+critic loss: 0.021731210872530937
+actor critic step 440: 
+ actor: rl_loss: -297.6421813964844 mle_loss 78.95297241210938
+critic loss: 0.05417748540639877
+actor critic step 450: 
+ actor: rl_loss: -250.27639770507812 mle_loss 250.63787841796875
+critic loss: 0.061992108821868896
+actor critic step 460: 
+ actor: rl_loss: -354.1666259765625 mle_loss 191.82211303710938
+critic loss: 0.045453183352947235
+actor critic step 470: 
+ actor: rl_loss: -217.77932739257812 mle_loss 110.90739440917969
+critic loss: 0.05305055156350136
+actor critic step 480: 
+ actor: rl_loss: -21.750303268432617 mle_loss 105.17933654785156
+critic loss: 0.04867918789386749
+actor critic step 490: 
+ actor: rl_loss: -47.14250183105469 mle_loss 95.36137390136719
+critic loss: 0.12224920094013214
+actor critic step 500: 
+ actor: rl_loss: -27.66806983947754 mle_loss 134.21774291992188
+critic loss: 0.06880570948123932
+start evaluating....
+valid bleu at step 500: 5.960000038146973
+actor critic step 510: 
+ actor: rl_loss: -54.44584655761719 mle_loss 86.88069152832031
+critic loss: 0.14053432643413544
+actor critic step 520: 
+ actor: rl_loss: -215.12355041503906 mle_loss 76.24759674072266
+critic loss: 0.11668512225151062
+actor critic step 530: 
+ actor: rl_loss: -336.11370849609375 mle_loss 87.31543731689453
+critic loss: 0.15196533501148224
+actor critic step 540: 
+ actor: rl_loss: -425.5734558105469 mle_loss 72.558349609375
+critic loss: 0.05885264649987221
+actor critic step 550: 
+ actor: rl_loss: -376.29376220703125 mle_loss 82.00251770019531
+critic loss: 0.08704964816570282
+actor critic step 560: 
+ actor: rl_loss: -398.7696838378906 mle_loss 82.30509948730469
+critic loss: 0.12754885852336884
+actor critic step 570: 
+ actor: rl_loss: -380.1539611816406 mle_loss 85.50816345214844
+critic loss: 0.11895209550857544
+actor critic step 580: 
+ actor: rl_loss: -395.2004699707031 mle_loss 105.233154296875
+critic loss: 0.19367417693138123
+actor critic step 590: 
+ actor: rl_loss: -420.9403076171875 mle_loss 71.74671936035156
+critic loss: 0.13494233787059784
+actor critic step 600: 
+ actor: rl_loss: -439.7954406738281 mle_loss 81.25552368164062
+critic loss: 0.11703021824359894
+start evaluating....
+valid bleu at step 600: 6.059999942779541
+actor critic step 610: 
+ actor: rl_loss: -497.77545166015625 mle_loss 65.0948486328125
+critic loss: 0.14120760560035706
+actor critic step 620: 
+ actor: rl_loss: -356.19244384765625 mle_loss 89.58600616455078
+critic loss: 0.18023967742919922
+actor critic step 630: 
+ actor: rl_loss: -327.3373107910156 mle_loss 84.83367919921875
+critic loss: 0.15283870697021484
+actor critic step 640: 
+ actor: rl_loss: -397.8184509277344 mle_loss 96.25721740722656
+critic loss: 0.20995530486106873
+actor critic step 650: 
+ actor: rl_loss: -443.76202392578125 mle_loss 78.18688201904297
+critic loss: 0.1524653136730194
+actor critic step 660: 
+ actor: rl_loss: -410.682373046875 mle_loss 69.01483154296875
+critic loss: 0.1282450258731842
+actor critic step 670: 
+ actor: rl_loss: -369.64349365234375 mle_loss 95.16020202636719
+critic loss: 0.14054876565933228
+actor critic step 680: 
+ actor: rl_loss: -348.7682189941406 mle_loss 100.15804290771484
+critic loss: 0.16053089499473572
+actor critic step 690: 
+ actor: rl_loss: -413.62542724609375 mle_loss 80.2573013305664
+critic loss: 0.12011855840682983
+actor critic step 700: 
+ actor: rl_loss: -483.49237060546875 mle_loss 98.17710876464844
+critic loss: 0.1452048420906067
+start evaluating....
+valid bleu at step 700: 7.150000095367432
+actor critic step 710: 
+ actor: rl_loss: -375.8582458496094 mle_loss 98.48624420166016
+critic loss: 0.12246284633874893
+actor critic step 720: 
+ actor: rl_loss: -454.39019775390625 mle_loss 93.8984375
+critic loss: 0.1815587282180786
+actor critic step 730: 
+ actor: rl_loss: -509.1472473144531 mle_loss 169.6830291748047
+critic loss: 0.19879867136478424
+actor critic step 740: 
+ actor: rl_loss: -398.97021484375 mle_loss 99.68923950195312
+critic loss: 0.10163334757089615
+actor critic step 750: 
+ actor: rl_loss: -424.0712890625 mle_loss 90.13139343261719
+critic loss: 0.16117802262306213
+actor critic step 760: 
+ actor: rl_loss: -527.8438110351562 mle_loss 72.56680297851562
+critic loss: 0.24163992702960968
+actor critic step 770: 
+ actor: rl_loss: -528.18017578125 mle_loss 84.43624877929688
+critic loss: 0.17093992233276367
+actor critic step 780: 
+ actor: rl_loss: -525.1256713867188 mle_loss 78.53184509277344
+critic loss: 0.1057027280330658
+actor critic step 790: 
+ actor: rl_loss: -560.7762451171875 mle_loss 76.97416687011719
+critic loss: 0.20060838758945465
+actor critic step 800: 
+ actor: rl_loss: -527.43359375 mle_loss 86.36785888671875
+critic loss: 0.12213286757469177
+start evaluating....
+valid bleu at step 800: 8.069999694824219
+actor critic step 810: 
+ actor: rl_loss: -503.194580078125 mle_loss 90.75967407226562
+critic loss: 0.15636108815670013
+actor critic step 820: 
+ actor: rl_loss: -552.6555786132812 mle_loss 84.39944458007812
+critic loss: 0.08969269692897797
+actor critic step 830: 
+ actor: rl_loss: -491.9844055175781 mle_loss 89.89561462402344
+critic loss: 0.15118980407714844
+actor critic step 840: 
+ actor: rl_loss: -521.6204833984375 mle_loss 94.06626892089844
+critic loss: 0.126364067196846
+actor critic step 850: 
+ actor: rl_loss: -533.7889404296875 mle_loss 95.31903076171875
+critic loss: 0.1367356926202774
+actor critic step 860: 
+ actor: rl_loss: -591.3711547851562 mle_loss 65.60675811767578
+critic loss: 0.11454522609710693
+actor critic step 870: 
+ actor: rl_loss: -542.8287963867188 mle_loss 89.20541381835938
+critic loss: 0.06478501856327057
+actor critic step 880: 
+ actor: rl_loss: -507.66278076171875 mle_loss 106.47589111328125
+critic loss: 0.09671850502490997
+actor critic step 890: 
+ actor: rl_loss: -601.9738159179688 mle_loss 75.7144775390625
+critic loss: 0.13929985463619232
+actor critic step 900: 
+ actor: rl_loss: -513.8131103515625 mle_loss 87.91462707519531
+critic loss: 0.09616465866565704
+start evaluating....
+valid bleu at step 900: 8.949999809265137
+actor critic step 910: 
+ actor: rl_loss: -586.7461547851562 mle_loss 85.7056884765625
+critic loss: 0.05808323994278908
+actor critic step 920: 
+ actor: rl_loss: -621.4888916015625 mle_loss 73.96713256835938
+critic loss: 0.16075542569160461
+actor critic step 930: 
+ actor: rl_loss: -585.6610717773438 mle_loss 87.28082275390625
+critic loss: 0.11170171946287155
+actor critic step 940: 
+ actor: rl_loss: -555.9901123046875 mle_loss 80.67414093017578
+critic loss: 0.0571792870759964
+actor critic step 950: 
+ actor: rl_loss: -506.5397033691406 mle_loss 87.29682922363281
+critic loss: 0.03385632485151291
+actor critic step 960: 
+ actor: rl_loss: -572.1261596679688 mle_loss 84.72747039794922
+critic loss: 0.09365365654230118
+actor critic step 970: 
+ actor: rl_loss: -618.9974365234375 mle_loss 88.39495849609375
+critic loss: 0.03430163115262985
+actor critic step 980: 
+ actor: rl_loss: -578.9778442382812 mle_loss 90.09062957763672
+critic loss: 0.07104188203811646
+actor critic step 990: 
+ actor: rl_loss: -567.41796875 mle_loss 94.80224609375
+critic loss: 0.05715000256896019
+actor critic step 1000: 
+ actor: rl_loss: -589.9349365234375 mle_loss 75.47723388671875
+critic loss: 0.034595608711242676
+start evaluating....
+valid bleu at step 1000: 10.539999961853027
+actor critic step 1010: 
+ actor: rl_loss: -606.7732543945312 mle_loss 71.4961929321289
+critic loss: 0.05642199516296387
+actor critic step 1020: 
+ actor: rl_loss: -724.4636840820312 mle_loss 49.32624435424805
+critic loss: 0.08400075882673264
+actor critic step 1030: 
+ actor: rl_loss: -564.4071655273438 mle_loss 65.99563598632812
+critic loss: 0.02828785963356495
+actor critic step 1040: 
+ actor: rl_loss: -560.4569091796875 mle_loss 91.65583801269531
+critic loss: 0.04347924143075943
+actor critic step 1050: 
+ actor: rl_loss: -531.025390625 mle_loss 109.87042236328125
+critic loss: 0.044463612139225006
+actor critic step 1060: 
+ actor: rl_loss: -613.4217529296875 mle_loss 76.607666015625
+critic loss: 0.047157496213912964
+actor critic step 1070: 
+ actor: rl_loss: -659.7032470703125 mle_loss 65.92515563964844
+critic loss: 0.08161520212888718
+actor critic step 1080: 
+ actor: rl_loss: -611.2327270507812 mle_loss 83.7421646118164
+critic loss: 0.0831565409898758
+actor critic step 1090: 
+ actor: rl_loss: -647.22802734375 mle_loss 60.65267562866211
+critic loss: 0.039493776857852936
+actor critic step 1100: 
+ actor: rl_loss: -536.740234375 mle_loss 71.63522338867188
+critic loss: 0.022851046174764633
+start evaluating....
+valid bleu at step 1100: 10.960000038146973
+actor critic step 1110: 
+ actor: rl_loss: -608.02392578125 mle_loss 134.07186889648438
+critic loss: 0.018197553232312202
+actor critic step 1120: 
+ actor: rl_loss: -612.7748413085938 mle_loss 71.63575744628906
+critic loss: 0.023882243782281876
+actor critic step 1130: 
+ actor: rl_loss: -659.395263671875 mle_loss 70.56814575195312
+critic loss: 0.06310431659221649
+actor critic step 1140: 
+ actor: rl_loss: -608.49169921875 mle_loss 63.862022399902344
+critic loss: 0.019725719466805458
+actor critic step 1150: 
+ actor: rl_loss: -676.8403930664062 mle_loss 83.27114868164062
+critic loss: 0.011532053351402283
+actor critic step 1160: 
+ actor: rl_loss: -570.7062377929688 mle_loss 86.24937438964844
+critic loss: 0.01528865098953247
+actor critic step 1170: 
+ actor: rl_loss: -725.7368774414062 mle_loss 56.280311584472656
+critic loss: 0.02044721320271492
+actor critic step 1180: 
+ actor: rl_loss: -663.2659301757812 mle_loss 81.02172088623047
+critic loss: 0.01603958196938038
+actor critic step 1190: 
+ actor: rl_loss: -692.221435546875 mle_loss 73.4353256225586
+critic loss: 0.002372005023062229
+actor critic step 1200: 
+ actor: rl_loss: -598.6572875976562 mle_loss 60.806087493896484
+critic loss: 0.011081598699092865
+start evaluating....
+valid bleu at step 1200: 11.779999732971191
+actor critic step 1210: 
+ actor: rl_loss: -672.145263671875 mle_loss 69.49899291992188
+critic loss: 0.008911529555916786
+actor critic step 1220: 
+ actor: rl_loss: -682.0089721679688 mle_loss 98.87953186035156
+critic loss: 0.03280242532491684
+actor critic step 1230: 
+ actor: rl_loss: -687.3274536132812 mle_loss 62.176578521728516
+critic loss: 0.008394438773393631
+actor critic step 1240: 
+ actor: rl_loss: -781.2763061523438 mle_loss 57.523948669433594
+critic loss: 0.010860204696655273
+actor critic step 1250: 
+ actor: rl_loss: -623.9534301757812 mle_loss 78.32469940185547
+critic loss: 0.0114629827439785
+actor critic step 1260: 
+ actor: rl_loss: -698.940673828125 mle_loss 95.45452880859375
+critic loss: 0.0011218732688575983
+actor critic step 1270: 
+ actor: rl_loss: -761.551025390625 mle_loss 74.34033203125
+critic loss: 0.004347981419414282
+actor critic step 1280: 
+ actor: rl_loss: -731.768798828125 mle_loss 57.825645446777344
+critic loss: 0.02643660269677639
+actor critic step 1290: 
+ actor: rl_loss: -662.5391235351562 mle_loss 67.84690856933594
+critic loss: 0.031258948147296906
+actor critic step 1300: 
+ actor: rl_loss: -805.5958251953125 mle_loss 67.0311508178711
+critic loss: 0.0014565243618562818
+start evaluating....
+valid bleu at step 1300: 12.029999732971191
+actor critic step 1310: 
+ actor: rl_loss: -768.1891479492188 mle_loss 62.181949615478516
+critic loss: 0.007493301294744015
+actor critic step 1320: 
+ actor: rl_loss: -718.58837890625 mle_loss 71.53418731689453
+critic loss: 0.008767995983362198
+actor critic step 1330: 
+ actor: rl_loss: -483.1236572265625 mle_loss 57.17949676513672
+critic loss: 0.006813105661422014
+actor critic step 1340: 
+ actor: rl_loss: -881.7328491210938 mle_loss 56.76652145385742
+critic loss: 0.008155958727002144
+actor critic step 1350: 
+ actor: rl_loss: -719.4981689453125 mle_loss 67.3081283569336
+critic loss: 0.015332428738474846
+actor critic step 1360: 
+ actor: rl_loss: -875.6295776367188 mle_loss 73.47990417480469
+critic loss: 0.028409672901034355
+actor critic step 1370: 
+ actor: rl_loss: -740.8703002929688 mle_loss 88.72526550292969
+critic loss: 0.006843424402177334
+actor critic step 1380: 
+ actor: rl_loss: -552.014892578125 mle_loss 2013.3717041015625
+critic loss: 0.001033247564919293
+actor critic step 1390: 
+ actor: rl_loss: -691.6713256835938 mle_loss 81.47348022460938
+critic loss: 0.005191212520003319
+actor critic step 1400: 
+ actor: rl_loss: -844.3635864257812 mle_loss 78.34246826171875
+critic loss: 0.003291073255240917
+start evaluating....
+valid bleu at step 1400: 7.420000076293945
+actor critic step 1410: 
+ actor: rl_loss: -769.685791015625 mle_loss 135.10194396972656
+critic loss: 0.005722943693399429
+actor critic step 1420: 
+ actor: rl_loss: -724.7542114257812 mle_loss 85.46131896972656
+critic loss: 0.0015354235656559467
+actor critic step 1430: 
+ actor: rl_loss: -703.9539794921875 mle_loss 107.27120208740234
+critic loss: 0.0014524632133543491
+actor critic step 1440: 
+ actor: rl_loss: -803.901611328125 mle_loss 88.15263366699219
+critic loss: 0.0028986213728785515
+actor critic step 1450: 
+ actor: rl_loss: -709.50390625 mle_loss 90.12713623046875
+critic loss: 0.007631267420947552
+actor critic step 1460: 
+ actor: rl_loss: -812.5654296875 mle_loss 69.96998596191406
+critic loss: 0.02746017649769783
+actor critic step 1470: 
+ actor: rl_loss: -844.9126586914062 mle_loss 87.32710266113281
+critic loss: 0.003249779809266329
+actor critic step 1480: 
+ actor: rl_loss: -834.3320922851562 mle_loss 78.86442565917969
+critic loss: 0.005427931435406208
+actor critic step 1490: 
+ actor: rl_loss: -913.894287109375 mle_loss 84.05494689941406
+critic loss: 0.008769629523158073
+actor critic step 1500: 
+ actor: rl_loss: -760.465576171875 mle_loss 90.76889038085938
+critic loss: 0.0001448590337531641
+start evaluating....
+valid bleu at step 1500: 8.84000015258789
+actor critic step 1510: 
+ actor: rl_loss: -853.1353759765625 mle_loss 74.64064025878906
+critic loss: 0.0037171323783695698
+actor critic step 1520: 
+ actor: rl_loss: -834.3389892578125 mle_loss 68.34228515625
+critic loss: 0.007840137928724289
+actor critic step 1530: 
+ actor: rl_loss: -706.7302856445312 mle_loss 128.23001098632812
+critic loss: 0.0007082375814206898
+actor critic step 1540: 
+ actor: rl_loss: -923.9251708984375 mle_loss 78.69379425048828
+critic loss: 0.00802958570420742
+actor critic step 1550: 
+ actor: rl_loss: -763.034912109375 mle_loss 976.5654907226562
+critic loss: 0.00022921300842426717
+actor critic step 1560: 
+ actor: rl_loss: -599.5972290039062 mle_loss 120.62528991699219
+critic loss: 0.0011392299784347415
+actor critic step 1570: 
+ actor: rl_loss: -755.90185546875 mle_loss 76.26636505126953
+critic loss: 0.0020209841895848513
+actor critic step 1580: 
+ actor: rl_loss: -669.0579223632812 mle_loss 71.90274047851562
+critic loss: 0.00188169302418828
+actor critic step 1590: 
+ actor: rl_loss: -728.8941040039062 mle_loss 84.392822265625
+critic loss: 4.835756044485606e-05
+actor critic step 1600: 
+ actor: rl_loss: -731.6949462890625 mle_loss 88.96051788330078
+critic loss: 4.599496242008172e-05
+start evaluating....
+valid bleu at step 1600: 8.890000343322754
+actor critic step 1610: 
+ actor: rl_loss: -789.8860473632812 mle_loss 88.70953369140625
+critic loss: 7.172469486249611e-05
+actor critic step 1620: 
+ actor: rl_loss: -742.6067504882812 mle_loss 241.29959106445312
+critic loss: 0.0023283876944333315
+actor critic step 1630: 
+ actor: rl_loss: -720.151611328125 mle_loss 87.18522644042969
+critic loss: 0.00259932829067111
+actor critic step 1640: 
+ actor: rl_loss: -703.697998046875 mle_loss 78.44705200195312
+critic loss: 2.1355335775297135e-05
+actor critic step 1650: 
+ actor: rl_loss: -833.8243408203125 mle_loss 64.61526489257812
+critic loss: 0.01326958928257227
+actor critic step 1660: 
+ actor: rl_loss: -654.6328125 mle_loss 101.26339721679688
+critic loss: 0.00052876170957461
+actor critic step 1670: 
+ actor: rl_loss: -813.2479248046875 mle_loss 79.69883728027344
+critic loss: 0.0005305804079398513
+actor critic step 1680: 
+ actor: rl_loss: -730.1738891601562 mle_loss 108.55636596679688
+critic loss: 0.0006994314608164132
+actor critic step 1690: 
+ actor: rl_loss: -722.189208984375 mle_loss 81.46096801757812
+critic loss: 0.0004798138979822397
+actor critic step 1700: 
+ actor: rl_loss: -821.0841674804688 mle_loss 83.90617370605469
+critic loss: 0.0004236510721966624
+start evaluating....
+valid bleu at step 1700: 8.40999984741211
+actor critic step 1710: 
+ actor: rl_loss: -750.313720703125 mle_loss 90.82132720947266
+critic loss: 0.0017782237846404314
+actor critic step 1720: 
+ actor: rl_loss: -715.1234741210938 mle_loss 113.54933166503906
+critic loss: 0.002272828947752714
+actor critic step 1730: 
+ actor: rl_loss: -808.44775390625 mle_loss 61.56572723388672
+critic loss: 0.005044733174145222
+actor critic step 1740: 
+ actor: rl_loss: -797.7367553710938 mle_loss 136.47430419921875
+critic loss: 2.522705472074449e-05
+actor critic step 1750: 
+ actor: rl_loss: -821.0028686523438 mle_loss 81.4034194946289
+critic loss: 0.0039740754291415215
+actor critic step 1760: 
+ actor: rl_loss: -660.4464111328125 mle_loss 85.43368530273438
+critic loss: 0.0012851543724536896
+actor critic step 1770: 
+ actor: rl_loss: -802.81640625 mle_loss 78.6480712890625
+critic loss: 0.00020549859618768096
+actor critic step 1780: 
+ actor: rl_loss: -921.660888671875 mle_loss 77.16357421875
+critic loss: 0.000752954394556582
+actor critic step 1790: 
+ actor: rl_loss: -796.8931884765625 mle_loss 71.94493103027344
+critic loss: 3.797627141466364e-05
+actor critic step 1800: 
+ actor: rl_loss: -784.84423828125 mle_loss 91.38670349121094
+critic loss: 2.6307887310395017e-05
+start evaluating....
+valid bleu at step 1800: 8.40999984741211
+actor critic step 1810: 
+ actor: rl_loss: -879.377685546875 mle_loss 62.77953338623047
+critic loss: 0.0010530848521739244
+actor critic step 1820: 
+ actor: rl_loss: -930.191650390625 mle_loss 87.55883026123047
+critic loss: 0.000674671377055347
+actor critic step 1830: 
+ actor: rl_loss: -755.9166870117188 mle_loss 93.00405883789062
+critic loss: 0.0014089730102568865
+actor critic step 1840: 
+ actor: rl_loss: -907.0480346679688 mle_loss 73.93585205078125
+critic loss: 4.900975909549743e-06
+actor critic step 1850: 
+ actor: rl_loss: -865.8073120117188 mle_loss 74.39584350585938
+critic loss: 5.367199264583178e-06
+actor critic step 1860: 
+ actor: rl_loss: -852.5739135742188 mle_loss 82.57059478759766
+critic loss: 0.0019481525523588061
+actor critic step 1870: 
+ actor: rl_loss: -819.0557250976562 mle_loss 96.28591918945312
+critic loss: 0.0003232315357308835
+actor critic step 1880: 
+ actor: rl_loss: -700.3693237304688 mle_loss 103.51624298095703
+critic loss: 4.088660716661252e-05
+actor critic step 1890: 
+ actor: rl_loss: -843.1064453125 mle_loss 73.2480697631836
+critic loss: 5.732765202992596e-06
+actor critic step 1900: 
+ actor: rl_loss: -846.92333984375 mle_loss 74.03370666503906
+critic loss: 0.00019826740026474
+start evaluating....
+valid bleu at step 1900: 9.989999771118164
+actor critic step 1910: 
+ actor: rl_loss: -849.9993896484375 mle_loss 71.45918273925781
+critic loss: 4.052023086842382e-06
+actor critic step 1920: 
+ actor: rl_loss: -974.9395141601562 mle_loss 67.95413208007812
+critic loss: 0.0013298491248860955
+actor critic step 1930: 
+ actor: rl_loss: -1033.2174072265625 mle_loss 67.62376403808594
+critic loss: 0.014354802668094635
+actor critic step 1940: 
+ actor: rl_loss: -885.287353515625 mle_loss 78.74055480957031
+critic loss: 6.8190242927812506e-06
+actor critic step 1950: 
+ actor: rl_loss: -823.5354614257812 mle_loss 78.46533203125
+critic loss: 3.883826866513118e-05
+actor critic step 1960: 
+ actor: rl_loss: -920.9696655273438 mle_loss 53.704559326171875
+critic loss: 1.4889910744386725e-05
+actor critic step 1970: 
+ actor: rl_loss: -912.3981323242188 mle_loss 86.90757751464844
+critic loss: 0.0010271065402776003
+actor critic step 1980: 
+ actor: rl_loss: -885.927734375 mle_loss 76.24688720703125
+critic loss: 4.81960887555033e-05
+actor critic step 1990: 
+ actor: rl_loss: -783.364501953125 mle_loss 91.18412780761719
+critic loss: 0.0006040342850610614
+actor critic step 2000: 
+ actor: rl_loss: -762.6798095703125 mle_loss 93.84573364257812
+critic loss: 6.973668860155158e-06
+start evaluating....
+valid bleu at step 2000: 10.579999923706055
+actor critic step 2010: 
+ actor: rl_loss: -867.3345336914062 mle_loss 77.72966766357422
+critic loss: 1.070036887540482e-05
+actor critic step 2020: 
+ actor: rl_loss: -1003.0846557617188 mle_loss 88.45633697509766
+critic loss: 2.9423648811643943e-05
+actor critic step 2030: 
+ actor: rl_loss: -878.6015625 mle_loss 75.03755187988281
+critic loss: 1.76980065589305e-05
+actor critic step 2040: 
+ actor: rl_loss: -771.2462768554688 mle_loss 98.14141845703125
+critic loss: 0.0005979309789836407
+actor critic step 2050: 
+ actor: rl_loss: -886.1395874023438 mle_loss 126.87934112548828
+critic loss: 6.633441444137134e-06
+actor critic step 2060: 
+ actor: rl_loss: -638.9996337890625 mle_loss 108.14346313476562
+critic loss: 0.002265873132273555
+actor critic step 2070: 
+ actor: rl_loss: -532.8096923828125 mle_loss 123.15565490722656
+critic loss: 0.00010305634350515902
+actor critic step 2080: 
+ actor: rl_loss: 89.60160827636719 mle_loss 120.46438598632812
+critic loss: 0.0029247403144836426
+actor critic step 2090: 
+ actor: rl_loss: 224.14939880371094 mle_loss 361.2445068359375
+critic loss: 0.006119469180703163
+actor critic step 2100: 
+ actor: rl_loss: 272.0155334472656 mle_loss 432.2322692871094
+critic loss: 0.0032106032595038414
+start evaluating....
+valid bleu at step 2100: 0.029999999329447746
+actor critic step 2110: 
+ actor: rl_loss: 295.8389892578125 mle_loss 457.2633972167969
+critic loss: 1.7027248759404756e-05
+actor critic step 2120: 
+ actor: rl_loss: 300.0748596191406 mle_loss 529.4166259765625
+critic loss: 0.0012593797873705626
+actor critic step 2130: 
+ actor: rl_loss: 306.2347412109375 mle_loss 362.4143371582031
+critic loss: 4.3038076000812e-06
+actor critic step 2140: 
+ actor: rl_loss: 308.6602478027344 mle_loss 396.45208740234375
+critic loss: 0.001572695909999311
+actor critic step 2150: 
+ actor: rl_loss: 295.94134521484375 mle_loss 284.43487548828125
+critic loss: 0.0004643237334676087
+actor critic step 2160: 
+ actor: rl_loss: 297.11065673828125 mle_loss 435.77691650390625
+critic loss: 0.001427727984264493
+actor critic step 2170: 
+ actor: rl_loss: 296.22576904296875 mle_loss 433.31707763671875
+critic loss: 3.6478520542004844e-06
+actor critic step 2180: 
+ actor: rl_loss: 286.1980285644531 mle_loss 367.2081604003906
+critic loss: 0.00010568036668701097
+actor critic step 2190: 
+ actor: rl_loss: 287.8603515625 mle_loss 336.64892578125
+critic loss: 2.026802576438058e-06
+actor critic step 2200: 
+ actor: rl_loss: 295.3212890625 mle_loss 339.4276123046875
+critic loss: 3.962142363889143e-05
+start evaluating....
+valid bleu at step 2200: 0.07000000029802322
+actor critic step 2210: 
+ actor: rl_loss: 280.85455322265625 mle_loss 325.3543701171875
+critic loss: 0.002904334105551243
+actor critic step 2220: 
+ actor: rl_loss: 288.4828186035156 mle_loss 418.93890380859375
+critic loss: 0.0008996581891551614
+actor critic step 2230: 
+ actor: rl_loss: 283.5022888183594 mle_loss 339.57537841796875
+critic loss: 0.003911849111318588
+actor critic step 2240: 
+ actor: rl_loss: 279.2084655761719 mle_loss 349.18951416015625
+critic loss: 0.0007255948148667812
+actor critic step 2250: 
+ actor: rl_loss: 280.1672668457031 mle_loss 392.2041931152344
+critic loss: 0.0027336368802934885
+actor critic step 2260: 
+ actor: rl_loss: 271.1629333496094 mle_loss 282.2024230957031
+critic loss: 0.0014210743829607964
+actor critic step 2270: 
+ actor: rl_loss: 277.3885803222656 mle_loss 301.3951721191406
+critic loss: 0.000741434982046485
+actor critic step 2280: 
+ actor: rl_loss: 279.34661865234375 mle_loss 264.3379821777344
+critic loss: 0.00044493144378066063
+actor critic step 2290: 
+ actor: rl_loss: 269.97283935546875 mle_loss 353.069091796875
+critic loss: 0.00023841374786570668
+actor critic step 2300: 
+ actor: rl_loss: 274.357421875 mle_loss 319.16888427734375
+critic loss: 0.0014703510096296668
+start evaluating....
+valid bleu at step 2300: 0.15000000596046448
+actor critic step 2310: 
+ actor: rl_loss: 274.5986328125 mle_loss 325.77813720703125
+critic loss: 0.0006540522444993258
+actor critic step 2320: 
+ actor: rl_loss: 270.5083312988281 mle_loss 344.7247619628906
+critic loss: 8.563693882024381e-06
+actor critic step 2330: 
+ actor: rl_loss: 254.48875427246094 mle_loss 408.6785888671875
+critic loss: 0.0001631187042221427
+actor critic step 2340: 
+ actor: rl_loss: 266.0267639160156 mle_loss 219.01815795898438
+critic loss: 0.0018243988743051887
+actor critic step 2350: 
+ actor: rl_loss: 266.07855224609375 mle_loss 307.5041198730469
+critic loss: 2.4195223886636086e-05
+actor critic step 2360: 
+ actor: rl_loss: 257.9125061035156 mle_loss 391.15838623046875
+critic loss: 0.000274281163001433
+actor critic step 2370: 
+ actor: rl_loss: 269.4205627441406 mle_loss 274.96929931640625
+critic loss: 3.805855521932244e-05
+actor critic step 2380: 
+ actor: rl_loss: 254.0076904296875 mle_loss 349.5923767089844
+critic loss: 4.6013637984287925e-06
+actor critic step 2390: 
+ actor: rl_loss: 256.5283508300781 mle_loss 308.281982421875
+critic loss: 0.019513413310050964
+actor critic step 2400: 
+ actor: rl_loss: 263.3617858886719 mle_loss 483.5144348144531
+critic loss: 0.001822949037887156
+start evaluating....
+valid bleu at step 2400: 0.15000000596046448
+actor critic step 2410: 
+ actor: rl_loss: 245.64833068847656 mle_loss 266.1365051269531
+critic loss: 0.0004016237217001617
+actor critic step 2420: 
+ actor: rl_loss: 252.390869140625 mle_loss 468.2829895019531
+critic loss: 0.00040885183261707425
+actor critic step 2430: 
+ actor: rl_loss: 251.67637634277344 mle_loss 413.44757080078125
+critic loss: 2.2391072889149655e-06
+actor critic step 2440: 
+ actor: rl_loss: 240.09375 mle_loss 400.6029052734375
+critic loss: 2.1207491954555735e-05
+actor critic step 2450: 
+ actor: rl_loss: 253.2130889892578 mle_loss 355.80517578125
+critic loss: 3.997529347543605e-05
+actor critic step 2460: 
+ actor: rl_loss: 244.0579071044922 mle_loss 350.4705810546875
+critic loss: 0.0008851272286847234
+actor critic step 2470: 
+ actor: rl_loss: 244.7979278564453 mle_loss 399.88739013671875
+critic loss: 0.00017307692905887961
+actor critic step 2480: 
+ actor: rl_loss: 244.8981475830078 mle_loss 385.08636474609375
+critic loss: 0.00588962621986866
+actor critic step 2490: 
+ actor: rl_loss: 249.3841094970703 mle_loss 372.3807373046875
+critic loss: 6.086419034545543e-06
+actor critic step 2500: 
+ actor: rl_loss: 239.18116760253906 mle_loss 260.6063537597656
+critic loss: 0.0005280030891299248
+start evaluating....
+valid bleu at step 2500: 0.10000000149011612
+actor critic step 2510: 
+ actor: rl_loss: 232.0267791748047 mle_loss 361.8329772949219
+critic loss: 0.00019557848281692713
+actor critic step 2520: 
+ actor: rl_loss: 240.00364685058594 mle_loss 438.6440734863281
+critic loss: 4.106736741960049e-05
+actor critic step 2530: 
+ actor: rl_loss: 231.9182586669922 mle_loss 240.08502197265625
+critic loss: 9.393363870913163e-05
+actor critic step 2540: 
+ actor: rl_loss: 236.19918823242188 mle_loss 239.0349578857422
+critic loss: 5.680366029992001e-06
+actor critic step 2550: 
+ actor: rl_loss: 230.0442352294922 mle_loss 362.3958740234375
+critic loss: 0.002340060193091631
+actor critic step 2560: 
+ actor: rl_loss: 236.2688446044922 mle_loss 278.69970703125
+critic loss: 0.00457064900547266
+actor critic step 2570: 
+ actor: rl_loss: 221.5825653076172 mle_loss 370.4957580566406
+critic loss: 1.0160652891499922e-05
+actor critic step 2580: 
+ actor: rl_loss: 225.18295288085938 mle_loss 291.4503173828125
+critic loss: 2.020778538280865e-06
+actor critic step 2590: 
+ actor: rl_loss: 225.98086547851562 mle_loss 297.77789306640625
+critic loss: 4.5053100620862097e-05
+actor critic step 2600: 
+ actor: rl_loss: 226.82032775878906 mle_loss 271.90447998046875
+critic loss: 0.0036483420990407467
+start evaluating....
+valid bleu at step 2600: 0.20000000298023224
+actor critic step 2610: 
+ actor: rl_loss: 222.49700927734375 mle_loss 432.50140380859375
+critic loss: 0.0037138983607292175
+actor critic step 2620: 
+ actor: rl_loss: 227.10769653320312 mle_loss 361.34442138671875
+critic loss: 1.6849837265908718e-05
+actor critic step 2630: 
+ actor: rl_loss: 229.1407928466797 mle_loss 270.3299560546875
+critic loss: 0.000214555868296884
+actor critic step 2640: 
+ actor: rl_loss: 236.31214904785156 mle_loss 264.41571044921875
+critic loss: 0.0017397981137037277
+actor critic step 2650: 
+ actor: rl_loss: 221.51060485839844 mle_loss 365.39996337890625
+critic loss: 4.328664726926945e-05
+actor critic step 2660: 
+ actor: rl_loss: 229.75193786621094 mle_loss 434.267578125
+critic loss: 0.0006710533634759486
+actor critic step 2670: 
+ actor: rl_loss: 231.44993591308594 mle_loss 242.75881958007812
+critic loss: 0.00012059565051458776
+actor critic step 2680: 
+ actor: rl_loss: 223.063232421875 mle_loss 295.8608093261719
+critic loss: 0.0011794937308877707
+actor critic step 2690: 
+ actor: rl_loss: 221.4752655029297 mle_loss 274.3252258300781
+critic loss: 1.1719133908627555e-05
+actor critic step 2700: 
+ actor: rl_loss: 218.3242950439453 mle_loss 224.41439819335938
+critic loss: 3.899046350852586e-05
+start evaluating....
+valid bleu at step 2700: 0.3199999928474426
+actor critic step 2710: 
+ actor: rl_loss: 213.6152801513672 mle_loss 294.9120788574219
+critic loss: 3.0106515623629093e-05
+actor critic step 2720: 
+ actor: rl_loss: 205.49899291992188 mle_loss 279.16363525390625
+critic loss: 1.0749209650384728e-05
+actor critic step 2730: 
+ actor: rl_loss: 213.08807373046875 mle_loss 180.29977416992188
+critic loss: 0.026575667783617973
+actor critic step 2740: 
+ actor: rl_loss: 210.24398803710938 mle_loss 209.99588012695312
+critic loss: 0.00046768051106482744
+actor critic step 2750: 
+ actor: rl_loss: 207.71702575683594 mle_loss 322.6305847167969
+critic loss: 0.0028170752339065075
+actor critic step 2760: 
+ actor: rl_loss: 211.03704833984375 mle_loss 222.831298828125
+critic loss: 0.0011015100171789527
+actor critic step 2770: 
+ actor: rl_loss: 203.45530700683594 mle_loss 288.3511657714844
+critic loss: 0.0019724052399396896
+actor critic step 2780: 
+ actor: rl_loss: 213.77450561523438 mle_loss 279.28045654296875
+critic loss: 0.015469573438167572
+actor critic step 2790: 
+ actor: rl_loss: 195.54812622070312 mle_loss 173.86026000976562
+critic loss: 3.053959517274052e-06
+actor critic step 2800: 
+ actor: rl_loss: 210.0370635986328 mle_loss 199.20416259765625
+critic loss: 0.001518678618595004
+start evaluating....
+valid bleu at step 2800: 0.28999999165534973
+actor critic step 2810: 
+ actor: rl_loss: 197.4421844482422 mle_loss 189.5625457763672
+critic loss: 1.06320544546179e-06
+actor critic step 2820: 
+ actor: rl_loss: 203.52651977539062 mle_loss 237.18417358398438
+critic loss: 0.002958172932267189
+actor critic step 2830: 
+ actor: rl_loss: 196.40591430664062 mle_loss 289.9573974609375
+critic loss: 1.2391039945214288e-06
+actor critic step 2840: 
+ actor: rl_loss: 207.2791290283203 mle_loss 272.269287109375
+critic loss: 0.001529182307422161
+actor critic step 2850: 
+ actor: rl_loss: 196.1146240234375 mle_loss 295.42315673828125
+critic loss: 1.0941965911115403e-06
+actor critic step 2860: 
+ actor: rl_loss: 198.91775512695312 mle_loss 317.89385986328125
+critic loss: 0.002266588853672147
+actor critic step 2870: 
+ actor: rl_loss: 202.4522247314453 mle_loss 247.54464721679688
+critic loss: 0.0018794110510498285
+actor critic step 2880: 
+ actor: rl_loss: 196.51510620117188 mle_loss 273.7460632324219
+critic loss: 0.00035537927760742605
+actor critic step 2890: 
+ actor: rl_loss: 198.82949829101562 mle_loss 261.49652099609375
+critic loss: 0.002609545597806573
+actor critic step 2900: 
+ actor: rl_loss: 207.91358947753906 mle_loss 181.83059692382812
+critic loss: 9.503413457423449e-05
+start evaluating....
+valid bleu at step 2900: 0.28999999165534973
+actor critic step 2910: 
+ actor: rl_loss: 191.08609008789062 mle_loss 189.79537963867188
+critic loss: 7.576808457088191e-06
+actor critic step 2920: 
+ actor: rl_loss: 201.25405883789062 mle_loss 218.32351684570312
+critic loss: 5.761174179497175e-06
+actor critic step 2930: 
+ actor: rl_loss: 202.92669677734375 mle_loss 255.573974609375
+critic loss: 0.0012640291824936867
+actor critic step 2940: 
+ actor: rl_loss: 187.77320861816406 mle_loss 277.64886474609375
+critic loss: 0.0009249989525415003
+actor critic step 2950: 
+ actor: rl_loss: 196.82159423828125 mle_loss 213.79330444335938
+critic loss: 0.002244408242404461
+actor critic step 2960: 
+ actor: rl_loss: 183.921630859375 mle_loss 232.83486938476562
+critic loss: 0.003543596714735031
+actor critic step 2970: 
+ actor: rl_loss: 168.4623260498047 mle_loss 207.40408325195312
+critic loss: 3.482108240859816e-06
+actor critic step 2980: 
+ actor: rl_loss: 182.74171447753906 mle_loss 216.90228271484375
+critic loss: 0.013468494638800621
+actor critic step 2990: 
+ actor: rl_loss: 186.36338806152344 mle_loss 243.24203491210938
+critic loss: 0.001325759687460959
+actor critic step 3000: 
+ actor: rl_loss: 189.11544799804688 mle_loss 277.0599365234375
+critic loss: 0.0028475408907979727
+start evaluating....
+valid bleu at step 3000: 0.3700000047683716
+actor critic step 3010: 
+ actor: rl_loss: 190.21597290039062 mle_loss 188.98867797851562
+critic loss: 9.049419895745814e-05
+actor critic step 3020: 
+ actor: rl_loss: 180.1177520751953 mle_loss 270.6506652832031
+critic loss: 0.00014473195187747478
+actor critic step 3030: 
+ actor: rl_loss: 189.6475067138672 mle_loss 211.41842651367188
+critic loss: 0.00011633334361249581
+actor critic step 3040: 
+ actor: rl_loss: 187.716552734375 mle_loss 252.76504516601562
+critic loss: 0.0007951353909447789
+actor critic step 3050: 
+ actor: rl_loss: 180.15643310546875 mle_loss 249.46234130859375
+critic loss: 4.312792043492664e-06
+actor critic step 3060: 
+ actor: rl_loss: 181.8011932373047 mle_loss 198.15394592285156
+critic loss: 0.0005304970545694232
+actor critic step 3070: 
+ actor: rl_loss: 192.5358428955078 mle_loss 263.197021484375
+critic loss: 0.0001741552841849625
+actor critic step 3080: 
+ actor: rl_loss: 179.0688018798828 mle_loss 259.01837158203125
+critic loss: 0.0005441854591481388
+actor critic step 3090: 
+ actor: rl_loss: 173.53060913085938 mle_loss 295.0948486328125
+critic loss: 0.0005094531225040555
+actor critic step 3100: 
+ actor: rl_loss: 163.57936096191406 mle_loss 193.902587890625
+critic loss: 3.3645461371634156e-05
+start evaluating....
+valid bleu at step 3100: 0.4000000059604645
+actor critic step 3110: 
+ actor: rl_loss: 181.72528076171875 mle_loss 256.725341796875
+critic loss: 0.0008862949907779694
+actor critic step 3120: 
+ actor: rl_loss: 177.04283142089844 mle_loss 237.178955078125
+critic loss: 0.0013370446395128965
+actor critic step 3130: 
+ actor: rl_loss: 170.27455139160156 mle_loss 226.64755249023438
+critic loss: 0.0006545408396050334
+actor critic step 3140: 
+ actor: rl_loss: 178.20579528808594 mle_loss 185.20675659179688
+critic loss: 0.00020323804346844554
+actor critic step 3150: 
+ actor: rl_loss: 169.63412475585938 mle_loss 223.08145141601562
+critic loss: 0.0015743854455649853
+actor critic step 3160: 
+ actor: rl_loss: 177.24537658691406 mle_loss 317.0133056640625
+critic loss: 0.001965403091162443
+actor critic step 3170: 
+ actor: rl_loss: 176.22776794433594 mle_loss 219.82249450683594
+critic loss: 8.76381091075018e-05
+actor critic step 3180: 
+ actor: rl_loss: 166.2045135498047 mle_loss 154.8232879638672
+critic loss: 5.0689988711383194e-05
+actor critic step 3190: 
+ actor: rl_loss: 180.9650421142578 mle_loss 160.5852508544922
+critic loss: 0.0010594321647658944
+actor critic step 3200: 
+ actor: rl_loss: 161.89585876464844 mle_loss 255.11465454101562
+critic loss: 6.0925121943000704e-05
+start evaluating....
+valid bleu at step 3200: 0.4000000059604645
+actor critic step 3210: 
+ actor: rl_loss: 164.17166137695312 mle_loss 209.25137329101562
+critic loss: 3.654336978797801e-05
+actor critic step 3220: 
+ actor: rl_loss: 160.97032165527344 mle_loss 151.54486083984375
+critic loss: 1.7433147831980023e-06
+actor critic step 3230: 
+ actor: rl_loss: 161.30516052246094 mle_loss 240.2054443359375
+critic loss: 0.002044325228780508
+actor critic step 3240: 
+ actor: rl_loss: 176.91758728027344 mle_loss 308.455078125
+critic loss: 0.0007720315479673445
+actor critic step 3250: 
+ actor: rl_loss: 176.29844665527344 mle_loss 217.3966827392578
+critic loss: 0.01300501637160778
+actor critic step 3260: 
+ actor: rl_loss: 157.12962341308594 mle_loss 223.67469787597656
+critic loss: 7.66771972848801e-06
+actor critic step 3270: 
+ actor: rl_loss: 159.96632385253906 mle_loss 251.39852905273438
+critic loss: 0.00012732842878904194
+actor critic step 3280: 
+ actor: rl_loss: 152.52816772460938 mle_loss 221.56321716308594
+critic loss: 0.013077153824269772
+actor critic step 3290: 
+ actor: rl_loss: 156.18301391601562 mle_loss 167.574951171875
+critic loss: 0.0009604637743905187
+actor critic step 3300: 
+ actor: rl_loss: 164.91265869140625 mle_loss 186.7695770263672
+critic loss: 7.17497778168763e-06
+start evaluating....
+valid bleu at step 3300: 0.5199999809265137
+actor critic step 3310: 
+ actor: rl_loss: 156.64231872558594 mle_loss 194.27731323242188
+critic loss: 8.564212521378067e-07
+actor critic step 3320: 
+ actor: rl_loss: 179.13064575195312 mle_loss 173.71795654296875
+critic loss: 0.0001516106422059238
+actor critic step 3330: 
+ actor: rl_loss: 164.0362091064453 mle_loss 234.79067993164062
+critic loss: 9.546917135594413e-05
+actor critic step 3340: 
+ actor: rl_loss: 151.95884704589844 mle_loss 248.8507080078125
+critic loss: 9.724176197778434e-05
+actor critic step 3350: 
+ actor: rl_loss: 155.55934143066406 mle_loss 149.2386932373047
+critic loss: 0.004336672369390726
+actor critic step 3360: 
+ actor: rl_loss: 155.00387573242188 mle_loss 156.68560791015625
+critic loss: 0.000700181582942605
+actor critic step 3370: 
+ actor: rl_loss: 161.33184814453125 mle_loss 210.74655151367188
+critic loss: 1.5343491668318165e-06
+actor critic step 3380: 
+ actor: rl_loss: 158.94561767578125 mle_loss 221.52569580078125
+critic loss: 0.0015156306326389313
+actor critic step 3390: 
+ actor: rl_loss: 160.791748046875 mle_loss 163.9473876953125
+critic loss: 0.0015716636553406715
+actor critic step 3400: 
+ actor: rl_loss: 147.64410400390625 mle_loss 235.219482421875
+critic loss: 0.003905831603333354
+start evaluating....
+valid bleu at step 3400: 0.44999998807907104
+actor critic step 3410: 
+ actor: rl_loss: 154.97491455078125 mle_loss 217.40504455566406
+critic loss: 9.849781235971022e-06
+actor critic step 3420: 
+ actor: rl_loss: 155.53549194335938 mle_loss 150.39122009277344
+critic loss: 0.0037532737478613853
+actor critic step 3430: 
+ actor: rl_loss: 152.32720947265625 mle_loss 180.57177734375
+critic loss: 0.0017495062202215195
+actor critic step 3440: 
+ actor: rl_loss: 147.6474151611328 mle_loss 213.91322326660156
+critic loss: 0.0014225575141608715
+actor critic step 3450: 
+ actor: rl_loss: 145.17630004882812 mle_loss 190.09832763671875
+critic loss: 0.0025611575692892075
+actor critic step 3460: 
+ actor: rl_loss: 141.2552032470703 mle_loss 226.52740478515625
+critic loss: 0.0021441769786179066
+actor critic step 3470: 
+ actor: rl_loss: 158.8865966796875 mle_loss 186.1397247314453
+critic loss: 0.0005128219490870833
+actor critic step 3480: 
+ actor: rl_loss: 141.27792358398438 mle_loss 212.3409423828125
+critic loss: 0.00015853092190809548
+actor critic step 3490: 
+ actor: rl_loss: 155.55279541015625 mle_loss 172.1857452392578
+critic loss: 1.0987969289999455e-05
+actor critic step 3500: 
+ actor: rl_loss: 157.34500122070312 mle_loss 190.27432250976562
+critic loss: 9.280346375817317e-07
+start evaluating....
+valid bleu at step 3500: 0.47999998927116394
+actor critic step 3510: 
+ actor: rl_loss: 151.20925903320312 mle_loss 199.27154541015625
+critic loss: 0.0008764462545514107
+actor critic step 3520: 
+ actor: rl_loss: 145.2150115966797 mle_loss 183.18624877929688
+critic loss: 0.00018662348156794906
+actor critic step 3530: 
+ actor: rl_loss: 138.16915893554688 mle_loss 201.03286743164062
+critic loss: 0.006899422034621239
+actor critic step 3540: 
+ actor: rl_loss: 147.26844787597656 mle_loss 228.123046875
+critic loss: 0.0010339757427573204
+actor critic step 3550: 
+ actor: rl_loss: 149.99317932128906 mle_loss 201.15963745117188
+critic loss: 0.003012679982930422
+actor critic step 3560: 
+ actor: rl_loss: 130.02078247070312 mle_loss 228.87059020996094
+critic loss: 0.00010427154484204948
+actor critic step 3570: 
+ actor: rl_loss: 151.79750061035156 mle_loss 226.695068359375
+critic loss: 0.005547698121517897
+actor critic step 3580: 
+ actor: rl_loss: 135.99098205566406 mle_loss 165.56625366210938
+critic loss: 0.00018001718854065984
+actor critic step 3590: 
+ actor: rl_loss: 131.7501678466797 mle_loss 164.22091674804688
+critic loss: 0.0009478108840994537
+actor critic step 3600: 
+ actor: rl_loss: 150.433837890625 mle_loss 200.3977508544922
+critic loss: 7.500842184526846e-05
+start evaluating....
+valid bleu at step 3600: 0.33000001311302185
+actor critic step 3610: 
+ actor: rl_loss: 140.29672241210938 mle_loss 182.95819091796875
+critic loss: 0.001319776987656951
+actor critic step 3620: 
+ actor: rl_loss: 134.93943786621094 mle_loss 204.7128143310547
+critic loss: 1.503720341133885e-06
+actor critic step 3630: 
+ actor: rl_loss: 137.6278533935547 mle_loss 173.43865966796875
+critic loss: 0.0010729029309004545
+actor critic step 3640: 
+ actor: rl_loss: 126.116943359375 mle_loss 156.51895141601562
+critic loss: 1.0384309234723332e-06
+actor critic step 3650: 
+ actor: rl_loss: 134.63632202148438 mle_loss 179.20266723632812
+critic loss: 1.13817122837645e-06
+actor critic step 3660: 
+ actor: rl_loss: 141.49000549316406 mle_loss 155.87860107421875
+critic loss: 3.664276300696656e-05
+actor critic step 3670: 
+ actor: rl_loss: 141.0889129638672 mle_loss 187.80638122558594
+critic loss: 6.078554633859312e-06
+actor critic step 3680: 
+ actor: rl_loss: 133.5526885986328 mle_loss 135.18902587890625
+critic loss: 2.159145651603467e-06
+actor critic step 3690: 
+ actor: rl_loss: 133.82395935058594 mle_loss 186.15191650390625
+critic loss: 0.0025515719316899776
+actor critic step 3700: 
+ actor: rl_loss: 127.33201599121094 mle_loss 187.38995361328125
+critic loss: 0.0013192299520596862
+start evaluating....
+valid bleu at step 3700: 0.46000000834465027
+actor critic step 3710: 
+ actor: rl_loss: 147.17703247070312 mle_loss 150.585205078125
+critic loss: 0.0007356225978583097
+actor critic step 3720: 
+ actor: rl_loss: 139.70468139648438 mle_loss 148.68679809570312
+critic loss: 4.0534298022976145e-05
+actor critic step 3730: 
+ actor: rl_loss: 135.06442260742188 mle_loss 147.43690490722656
+critic loss: 6.777191629225854e-06
+actor critic step 3740: 
+ actor: rl_loss: 138.67770385742188 mle_loss 168.2678680419922
+critic loss: 0.0009496444836258888
+actor critic step 3750: 
+ actor: rl_loss: 127.79210662841797 mle_loss 134.80320739746094
+critic loss: 0.0010302296141162515
+actor critic step 3760: 
+ actor: rl_loss: 137.61538696289062 mle_loss 176.23773193359375
+critic loss: 0.0005187063361518085
+actor critic step 3770: 
+ actor: rl_loss: 119.19683837890625 mle_loss 179.03921508789062
+critic loss: 6.340837717289105e-05
+actor critic step 3780: 
+ actor: rl_loss: 121.74446868896484 mle_loss 204.77684020996094
+critic loss: 1.2475331914174603e-06
+actor critic step 3790: 
+ actor: rl_loss: 132.6533966064453 mle_loss 176.61119079589844
+critic loss: 0.0008692193077877164
+actor critic step 3800: 
+ actor: rl_loss: 135.29672241210938 mle_loss 206.72549438476562
+critic loss: 0.001347972429357469
+start evaluating....
+valid bleu at step 3800: 0.46000000834465027
+actor critic step 3810: 
+ actor: rl_loss: 117.08601379394531 mle_loss 195.3379669189453
+critic loss: 0.0008934540674090385
+actor critic step 3820: 
+ actor: rl_loss: 129.5200958251953 mle_loss 135.83641052246094
+critic loss: 6.714547635056078e-05
+actor critic step 3830: 
+ actor: rl_loss: 128.89793395996094 mle_loss 163.7689666748047
+critic loss: 3.8600406696787104e-05
+actor critic step 3840: 
+ actor: rl_loss: 117.22197723388672 mle_loss 211.62657165527344
+critic loss: 1.7918913727044128e-05
+actor critic step 3850: 
+ actor: rl_loss: 103.2251205444336 mle_loss 190.0076446533203
+critic loss: 0.0002696133451536298
+actor critic step 3860: 
+ actor: rl_loss: 116.94854736328125 mle_loss 147.77488708496094
+critic loss: 0.0031060026958584785
+actor critic step 3870: 
+ actor: rl_loss: 108.38016510009766 mle_loss 208.26937866210938
+critic loss: 7.064025453473732e-07
+actor critic step 3880: 
+ actor: rl_loss: 120.8758544921875 mle_loss 195.78570556640625
+critic loss: 7.719853556409362e-07
+actor critic step 3890: 
+ actor: rl_loss: 109.38851928710938 mle_loss 172.74911499023438
+critic loss: 0.0015095012495294213
+actor critic step 3900: 
+ actor: rl_loss: 110.61320495605469 mle_loss 169.81724548339844
+critic loss: 1.8575486819827347e-06
+start evaluating....
+valid bleu at step 3900: 0.699999988079071
+actor critic step 3910: 
+ actor: rl_loss: 123.0873031616211 mle_loss 141.2898406982422
+critic loss: 5.525674168893602e-06
+actor critic step 3920: 
+ actor: rl_loss: 107.60860443115234 mle_loss 179.3950653076172
+critic loss: 0.0007721250294707716
+actor critic step 3930: 
+ actor: rl_loss: 112.5654296875 mle_loss 124.4765625
+critic loss: 8.806237019598484e-05
+actor critic step 3940: 
+ actor: rl_loss: 124.14932250976562 mle_loss 152.15460205078125
+critic loss: 7.738627027720213e-05
+actor critic step 3950: 
+ actor: rl_loss: 132.28810119628906 mle_loss 220.71278381347656
+critic loss: 0.01362348161637783
+actor critic step 3960: 
+ actor: rl_loss: 117.84072875976562 mle_loss 194.229248046875
+critic loss: 0.0010864334180951118
+actor critic step 3970: 
+ actor: rl_loss: 106.89454650878906 mle_loss 156.88714599609375
+critic loss: 5.722155833609577e-07
+actor critic step 3980: 
+ actor: rl_loss: 115.47666931152344 mle_loss 128.27418518066406
+critic loss: 0.0001682880101725459
+actor critic step 3990: 
+ actor: rl_loss: 111.74769592285156 mle_loss 177.65652465820312
+critic loss: 0.000937973614782095
+actor critic step 4000: 
+ actor: rl_loss: 123.03153991699219 mle_loss 164.91397094726562
+critic loss: 0.0016537548508495092
+start evaluating....
+valid bleu at step 4000: 0.47999998927116394
+actor critic step 4010: 
+ actor: rl_loss: 118.9209976196289 mle_loss 201.92893981933594
+critic loss: 0.000231265599722974
+actor critic step 4020: 
+ actor: rl_loss: 103.1563720703125 mle_loss 169.14974975585938
+critic loss: 5.3489238780457526e-05
+actor critic step 4030: 
+ actor: rl_loss: 109.22215270996094 mle_loss 131.2804412841797
+critic loss: 1.1901025573024526e-05
+actor critic step 4040: 
+ actor: rl_loss: 127.83260345458984 mle_loss 194.5727996826172
+critic loss: 8.845095749165921e-07
+actor critic step 4050: 
+ actor: rl_loss: 112.4403076171875 mle_loss 200.306884765625
+critic loss: 0.0077489218674600124
+actor critic step 4060: 
+ actor: rl_loss: 112.80075073242188 mle_loss 131.96725463867188
+critic loss: 8.935045912039641e-07
+actor critic step 4070: 
+ actor: rl_loss: 116.30667114257812 mle_loss 151.60894775390625
+critic loss: 2.3400010832119733e-05
+actor critic step 4080: 
+ actor: rl_loss: 113.2142105102539 mle_loss 127.14344024658203
+critic loss: 0.0032466119155287743
+actor critic step 4090: 
+ actor: rl_loss: 97.33238983154297 mle_loss 203.42245483398438
+critic loss: 0.002440115436911583
+actor critic step 4100: 
+ actor: rl_loss: 111.04624938964844 mle_loss 136.4052276611328
+critic loss: 1.4974630175856873e-06
+start evaluating....
+valid bleu at step 4100: 0.5699999928474426
+actor critic step 4110: 
+ actor: rl_loss: 110.3411865234375 mle_loss 135.20428466796875
+critic loss: 2.1151467990421224e-06
+actor critic step 4120: 
+ actor: rl_loss: 112.52864074707031 mle_loss 162.48733520507812
+critic loss: 0.001550084911286831
+actor critic step 4130: 
+ actor: rl_loss: 97.91512298583984 mle_loss 175.47891235351562
+critic loss: 0.00010228282189927995
+actor critic step 4140: 
+ actor: rl_loss: 105.25080108642578 mle_loss 143.33407592773438
+critic loss: 0.00011278763122390956
+actor critic step 4150: 
+ actor: rl_loss: 104.61782836914062 mle_loss 128.1361083984375
+critic loss: 7.03338571383938e-07
+actor critic step 4160: 
+ actor: rl_loss: 113.04570770263672 mle_loss 144.49429321289062
+critic loss: 0.0039038071408867836
+actor critic step 4170: 
+ actor: rl_loss: 101.0022201538086 mle_loss 139.14846801757812
+critic loss: 0.0006146790692582726
+actor critic step 4180: 
+ actor: rl_loss: 111.4057388305664 mle_loss 157.15960693359375
+critic loss: 0.0013121118536219
+actor critic step 4190: 
+ actor: rl_loss: 103.4256820678711 mle_loss 130.4102783203125
+critic loss: 1.5331072063418105e-05
+actor critic step 4200: 
+ actor: rl_loss: 99.99990844726562 mle_loss 170.42684936523438
+critic loss: 8.727616318537912e-07
+start evaluating....
+valid bleu at step 4200: 0.6100000143051147
+actor critic step 4210: 
+ actor: rl_loss: 114.63636016845703 mle_loss 193.99087524414062
+critic loss: 0.00013440317707136273
+actor critic step 4220: 
+ actor: rl_loss: 105.6664810180664 mle_loss 200.76824951171875
+critic loss: 5.463204615807626e-06
+actor critic step 4230: 
+ actor: rl_loss: 87.70983123779297 mle_loss 157.8309326171875
+critic loss: 7.071570280459127e-07
+actor critic step 4240: 
+ actor: rl_loss: 106.60920715332031 mle_loss 187.80490112304688
+critic loss: 0.0009038614807650447
+actor critic step 4250: 
+ actor: rl_loss: 99.98950958251953 mle_loss 133.13668823242188
+critic loss: 2.215891072410159e-06
+actor critic step 4260: 
+ actor: rl_loss: 106.09668731689453 mle_loss 152.93978881835938
+critic loss: 7.520690132878372e-07
+actor critic step 4270: 
+ actor: rl_loss: 92.45514678955078 mle_loss 171.81723022460938
+critic loss: 0.00058852753136307
+actor critic step 4280: 
+ actor: rl_loss: 103.29488372802734 mle_loss 179.6757354736328
+critic loss: 1.0095254765474238e-06
+actor critic step 4290: 
+ actor: rl_loss: 109.2043228149414 mle_loss 128.39218139648438
+critic loss: 4.887187969870865e-07
+actor critic step 4300: 
+ actor: rl_loss: 106.4420166015625 mle_loss 119.0631332397461
+critic loss: 0.007581394165754318
+start evaluating....
+valid bleu at step 4300: 0.4099999964237213
+actor critic step 4310: 
+ actor: rl_loss: 98.70449829101562 mle_loss 172.89157104492188
+critic loss: 0.007618914358317852
+actor critic step 4320: 
+ actor: rl_loss: 88.99726867675781 mle_loss 153.69497680664062
+critic loss: 2.0271325411158614e-05
+actor critic step 4330: 
+ actor: rl_loss: 108.06846618652344 mle_loss 140.59124755859375
+critic loss: 3.985254807048477e-05
+actor critic step 4340: 
+ actor: rl_loss: 96.03205871582031 mle_loss 155.38319396972656
+critic loss: 0.0020799438934773207
+actor critic step 4350: 
+ actor: rl_loss: 102.15652465820312 mle_loss 137.04275512695312
+critic loss: 2.4265395040856674e-05
+actor critic step 4360: 
+ actor: rl_loss: 105.5050048828125 mle_loss 117.78581237792969
+critic loss: 0.0009161492343991995
+actor critic step 4370: 
+ actor: rl_loss: 92.92182922363281 mle_loss 131.75332641601562
+critic loss: 0.002836482133716345
+actor critic step 4380: 
+ actor: rl_loss: 89.37774658203125 mle_loss 185.75584411621094
+critic loss: 0.0006378900143317878
+actor critic step 4390: 
+ actor: rl_loss: 93.82957458496094 mle_loss 162.2821044921875
+critic loss: 0.0007227550959214568
+actor critic step 4400: 
+ actor: rl_loss: 89.71940612792969 mle_loss 153.3160858154297
+critic loss: 0.000982017139904201
+start evaluating....
+valid bleu at step 4400: 0.8999999761581421
+actor critic step 4410: 
+ actor: rl_loss: 90.17015075683594 mle_loss 160.3836669921875
+critic loss: 0.008693432435393333
+actor critic step 4420: 
+ actor: rl_loss: 97.24230194091797 mle_loss 137.00979614257812
+critic loss: 0.0016996911726891994
+actor critic step 4430: 
+ actor: rl_loss: 95.23066711425781 mle_loss 138.2887725830078
+critic loss: 0.0012962119653820992
+actor critic step 4440: 
+ actor: rl_loss: 100.50498962402344 mle_loss 149.63754272460938
+critic loss: 5.420014531409834e-06
+actor critic step 4450: 
+ actor: rl_loss: 92.6987075805664 mle_loss 108.67252349853516
+critic loss: 1.7788429431675468e-06
+actor critic step 4460: 
+ actor: rl_loss: 111.61386108398438 mle_loss 132.1494598388672
+critic loss: 1.1913255093531916e-06
+actor critic step 4470: 
+ actor: rl_loss: 89.11027526855469 mle_loss 125.43331909179688
+critic loss: 1.0496361028344836e-05

@@ -1,0 +1,255 @@
+WARNING:root:multi-bleu.perl returned non-zero exit code
+WARNING:root:b'Illegal division by zero at /home/lilei/texar-pytorch/bin/utils/multi-bleu.perl line 154, <STDIN> line 6969.\n'
+WARNING:root:multi-bleu.perl returned non-zero exit code
+WARNING:root:b'Illegal division by zero at /home/lilei/texar-pytorch/bin/utils/multi-bleu.perl line 154, <STDIN> line 6969.\n'
+loading pretrained actor
+load successfully!
+do evaluting on test set....
+start evaluating....
+mle bleu after pretrain on test 26.219999313354492
+loading pretrained critic
+load successfully!
+start actor-critic training...
+actor critic step 0: 
+ actor: rl_loss: 4.513628959655762 mle_loss 25.280818939208984
+critic loss: 3.5301956813782454e-05
+doing evaluating....
+start evaluating....
+bleu at step 0: 27.229999542236328
+actor critic step 100: 
+ actor: rl_loss: -15.007681846618652 mle_loss 38.96186065673828
+critic loss: 0.0011759180342778563
+actor critic step 200: 
+ actor: rl_loss: -54.35171890258789 mle_loss 39.473087310791016
+critic loss: 2.3048602088238113e-05
+doing evaluating....
+start evaluating....
+bleu at step 200: 19.389999389648438
+actor critic step 300: 
+ actor: rl_loss: -129.55758666992188 mle_loss 68.1490478515625
+critic loss: 4.1447194234933704e-05
+actor critic step 400: 
+ actor: rl_loss: -359.0892333984375 mle_loss 104.24539184570312
+critic loss: 0.002039120765402913
+doing evaluating....
+start evaluating....
+bleu at step 400: 4.309999942779541
+actor critic step 500: 
+ actor: rl_loss: -1494.88134765625 mle_loss 290.90032958984375
+critic loss: 0.007817916572093964
+actor critic step 600: 
+ actor: rl_loss: -6856.5751953125 mle_loss 3824.237060546875
+critic loss: 0.006804937496781349
+doing evaluating....
+start evaluating....
+bleu at step 600: 0.029999999329447746
+actor critic step 700: 
+ actor: rl_loss: -10248.046875 mle_loss 1903.369873046875
+critic loss: 0.00559994438663125
+actor critic step 800: 
+ actor: rl_loss: -14579.5439453125 mle_loss 10228.544921875
+critic loss: 0.003979726694524288
+doing evaluating....
+start evaluating....
+bleu at step 800: 0.0
+actor critic step 900: 
+ actor: rl_loss: -16582.4296875 mle_loss 4829.89501953125
+critic loss: 0.005747001152485609
+actor critic step 1000: 
+ actor: rl_loss: -21807.8828125 mle_loss 730.9720458984375
+critic loss: 0.008459252305328846
+doing evaluating....
+start evaluating....
+bleu at step 1000: 0.0
+actor critic step 1100: 
+ actor: rl_loss: -28263.892578125 mle_loss 13356.015625
+critic loss: 0.003947694785892963
+actor critic step 1200: 
+ actor: rl_loss: -32070.751953125 mle_loss 276148.25
+critic loss: 0.01150524988770485
+doing evaluating....
+start evaluating....
+bleu at step 1200: 0.0
+actor critic step 1300: 
+ actor: rl_loss: -25390.943359375 mle_loss 256644.421875
+critic loss: 0.006155213341116905
+actor critic step 1400: 
+ actor: rl_loss: -24183.84765625 mle_loss 227249.5
+critic loss: 0.008989421650767326
+doing evaluating....
+start evaluating....
+bleu at step 1400: 0.0
+actor critic step 1500: 
+ actor: rl_loss: -25015.80859375 mle_loss 203345.34375
+critic loss: 0.003909616265445948
+actor critic step 1600: 
+ actor: rl_loss: -28624.111328125 mle_loss 176268.78125
+critic loss: 0.006975750904530287
+doing evaluating....
+start evaluating....
+bleu at step 1600: 0.0
+actor critic step 1700: 
+ actor: rl_loss: -28602.681640625 mle_loss 196558.8125
+critic loss: 0.004137253388762474
+actor critic step 1800: 
+ actor: rl_loss: -31944.146484375 mle_loss 164359.53125
+critic loss: 0.010081611573696136
+doing evaluating....
+start evaluating....
+bleu at step 1800: 0.0
+actor critic step 1900: 
+ actor: rl_loss: -31072.9609375 mle_loss 150324.8125
+critic loss: 0.009787462651729584
+actor critic step 2000: 
+ actor: rl_loss: -34583.68359375 mle_loss 155022.9375
+critic loss: 0.006455207243561745
+doing evaluating....
+start evaluating....
+bleu at step 2000: 0.0
+actor critic step 2100: 
+ actor: rl_loss: -35074.046875 mle_loss 138182.25
+critic loss: 0.007984315976500511
+actor critic step 2200: 
+ actor: rl_loss: -36127.3515625 mle_loss 129538.5546875
+critic loss: 0.006740807555615902
+doing evaluating....
+start evaluating....
+bleu at step 2200: 0.0
+actor critic step 2300: 
+ actor: rl_loss: -36805.26953125 mle_loss 128665.890625
+critic loss: 0.010210057720541954
+actor critic step 2400: 
+ actor: rl_loss: -37304.64453125 mle_loss 117517.2421875
+critic loss: 0.002811121754348278
+doing evaluating....
+start evaluating....
+bleu at step 2400: 0.0
+actor critic step 2500: 
+ actor: rl_loss: -38370.80078125 mle_loss 90071.734375
+critic loss: 0.0005889718304388225
+actor critic step 2600: 
+ actor: rl_loss: -38981.58984375 mle_loss 100073.859375
+critic loss: 0.00143597018904984
+doing evaluating....
+start evaluating....
+bleu at step 2600: 0.0
+actor critic step 2700: 
+ actor: rl_loss: -39550.0703125 mle_loss 91577.21875
+critic loss: 0.0031430476810783148
+actor critic step 2800: 
+ actor: rl_loss: -40220.91796875 mle_loss 99905.8671875
+critic loss: 0.004911256022751331
+doing evaluating....
+start evaluating....
+bleu at step 2800: 0.0
+actor critic step 2900: 
+ actor: rl_loss: -40910.6328125 mle_loss 93893.046875
+critic loss: 0.0026630228385329247
+actor critic step 3000: 
+ actor: rl_loss: -41411.61328125 mle_loss 95100.4609375
+critic loss: 0.0014676663558930159
+doing evaluating....
+start evaluating....
+bleu at step 3000: 0.0
+actor critic step 3100: 
+ actor: rl_loss: -41681.3125 mle_loss 67869.6640625
+critic loss: 0.002137209288775921
+actor critic step 3200: 
+ actor: rl_loss: -42406.1875 mle_loss 76998.015625
+critic loss: 0.000938328739721328
+doing evaluating....
+start evaluating....
+bleu at step 3200: 0.0
+actor critic step 3300: 
+ actor: rl_loss: -42884.04296875 mle_loss 71768.1328125
+critic loss: 0.0012360630789771676
+actor critic step 3400: 
+ actor: rl_loss: -43371.8515625 mle_loss 61641.3203125
+critic loss: 2.6969437385560013e-05
+doing evaluating....
+start evaluating....
+bleu at step 3400: 0.0
+actor critic step 3500: 
+ actor: rl_loss: -43999.99609375 mle_loss 83779.1796875
+critic loss: 0.0009361362317577004
+actor critic step 3600: 
+ actor: rl_loss: -44035.62109375 mle_loss 73403.5546875
+critic loss: 0.0009425542666576803
+doing evaluating....
+start evaluating....
+bleu at step 3600: 0.0
+actor critic step 3700: 
+ actor: rl_loss: -44600.10546875 mle_loss 80671.4609375
+critic loss: 0.0001686159084783867
+actor critic step 3800: 
+ actor: rl_loss: -45267.23046875 mle_loss 75042.921875
+critic loss: 0.0005833394243381917
+doing evaluating....
+start evaluating....
+bleu at step 3800: 0.0
+actor critic step 3900: 
+ actor: rl_loss: -45702.56640625 mle_loss 73267.40625
+critic loss: 0.0009914254769682884
+actor critic step 4000: 
+ actor: rl_loss: -46211.0234375 mle_loss 70673.203125
+critic loss: 7.778925646562129e-05
+doing evaluating....
+start evaluating....
+bleu at step 4000: 0.0
+actor critic step 4100: 
+ actor: rl_loss: -46594.78515625 mle_loss 76894.0625
+critic loss: 0.0002290842094225809
+actor critic step 4200: 
+ actor: rl_loss: -47175.94921875 mle_loss 69024.015625
+critic loss: 0.0010541322408244014
+doing evaluating....
+start evaluating....
+bleu at step 4200: 0.0
+actor critic step 4300: 
+ actor: rl_loss: -47524.421875 mle_loss 58613.59375
+critic loss: 0.0006962032057344913
+actor critic step 4400: 
+ actor: rl_loss: -47334.328125 mle_loss 81251.5546875
+critic loss: 0.0008513704524375498
+doing evaluating....
+start evaluating....
+bleu at step 4400: 0.0
+actor critic step 4500: 
+ actor: rl_loss: -48033.49609375 mle_loss 65905.8125
+critic loss: 0.0006461917655542493
+actor critic step 4600: 
+ actor: rl_loss: -48355.171875 mle_loss 74957.1015625
+critic loss: 0.0009350805776193738
+doing evaluating....
+start evaluating....
+bleu at step 4600: 0.0
+actor critic step 4700: 
+ actor: rl_loss: -48550.75 mle_loss 68059.484375
+critic loss: 0.004549781326204538
+actor critic step 4800: 
+ actor: rl_loss: -48698.59375 mle_loss 55301.6640625
+critic loss: 3.222807572456077e-05
+doing evaluating....
+start evaluating....
+bleu at step 4800: 0.0
+actor critic step 4900: 
+ actor: rl_loss: -49085.86328125 mle_loss 57503.9921875
+critic loss: 9.155356383416802e-05
+actor critic step 5000: 
+ actor: rl_loss: -49498.58203125 mle_loss 69075.796875
+critic loss: 0.005112745799124241
+doing evaluating....
+start evaluating....
+bleu at step 5000: 0.0
+actor critic step 5100: 
+ actor: rl_loss: -50128.46875 mle_loss 65424.55078125
+critic loss: 0.0004351703100837767
+actor critic step 5200: 
+ actor: rl_loss: -50468.33984375 mle_loss 62353.0546875
+critic loss: 0.011027541011571884
+doing evaluating....
+start evaluating....
+bleu at step 5200: 0.0
+actor critic step 5300: 
+ actor: rl_loss: -50901.66015625 mle_loss 64708.50390625
+critic loss: 0.007032373920083046
