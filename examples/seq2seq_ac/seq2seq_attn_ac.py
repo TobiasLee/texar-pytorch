@@ -8,9 +8,9 @@ import torch
 import texar.torch as tx
 import os
 from tqdm import tqdm
-from .utils.util import compute_bleu
-from .actor import Seq2SeqAttnActor
-from .critic import Critic
+from utils.util import compute_bleu
+from actor import Seq2SeqAttnActor
+from critic import Critic
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -246,7 +246,7 @@ def _main():
     print("load successfully!")
     #    pre_train_actor()
     # copy params
-    print("loaded bleu on val ", _actor_mle_eval_epoch('val'))
+#    print("loaded bleu on val ", _actor_mle_eval_epoch('val'))
     print("loading pre-trained critic")
     critic.load_state_dict(torch.load("./models/critic-pre-train/critic-final.ckpt"))
     print("load successfully!")
