@@ -1,11 +1,14 @@
 pre_train_actor_epochs = 15
 pre_train_critic_epochs = 5
-save_interval = 1000 # save critic every 1000 step, almost one epoch
 rl_epochs = 10
+
+
+save_interval = 1000  # save critic every 1000 step, almost one epoch
+eval_interval = 50
+display = 5
 
 max_decoding_len = 60
 
-display = 5
 lambda_ll = 0.1
 lambda_rl = 1e-3
 source_vocab_file = './data/iwslt14/vocab.de'
