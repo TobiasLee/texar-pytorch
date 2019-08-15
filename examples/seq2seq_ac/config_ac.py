@@ -5,7 +5,7 @@ rl_epochs = 10
 
 max_decoding_len = 60
 
-display = 1
+display = 5
 lambda_ll = 0.1
 lambda_rl = 1e-3
 source_vocab_file = './data/iwslt14/vocab.de'

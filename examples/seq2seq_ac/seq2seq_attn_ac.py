@@ -498,16 +498,16 @@ def _main():
 #    pre_train_actor()
     # copy params
     #print(_actor_mle_eval_epoch('test'))
-    # print("loading pretrained critic")
-    # critic.load_state_dict(torch.load("./models/critic-pre-train/critic-final.ckpt"))
-    # print("load successfully!")
+    print("loading pretrained critic")
+    critic.load_state_dict(torch.load("./models/critic-pre-train/critic-final.ckpt"))
+    print("load successfully!")
     
     for d_p, p in zip(delay_critic.parameters(), critic.parameters()):
         d_p.data.copy_(p.data)
     for d_p, p in zip(delay_actor.parameters(), actor.parameters()):
         d_p.data.copy_(p.data)
 
-    pre_train_critic()
+#    pre_train_critic()
 #    model_path = os.path.join(args.output_dir, "critic-pre-train")
 #    os.makedirs(model_path, exist_ok=True)
 #    torch.save(critic.state_dict(), model_path + "/critic.ckpt")
