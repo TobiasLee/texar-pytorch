@@ -25,7 +25,7 @@ def compute_bleu(sampled_ids, target_ids, eos_token_id, device):
             sts_bleu = nltk_bleu([ref], hypo, auto_reweigh=True, smoothing_function=chencherry.method4)
             ps.append(sts_bleu)  # partial sentence bleu
 
-        if i == 1 or i == len(output_ids[0]):
+        if i == 1:
             # first and last, set the difference
             bleus.append(torch.Tensor(ps))  # 32
         else:
