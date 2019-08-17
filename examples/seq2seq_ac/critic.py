@@ -2,6 +2,7 @@ import torch.nn as nn
 import torch
 import texar.torch as tx
 
+
 class Critic(nn.Module):
     """Critic model to guide the actor. Indeed, it is also a encoder-decoder.
     Q(s_t, a_t)
@@ -36,9 +37,11 @@ class Critic(nn.Module):
             hparams=config_model.decoder)
         # mapping from hidden output to vocab distribution
         # suppose actor and critic has same hidden size
-        self.score_mapping = nn.Linear(self.decoder.cell.hidden_size * 2,
+        # self.score_mapping = nn.Linear(self.decoder.cell.hidden_size * 2,
+        #                                train_data.target_vocab.size)
+        self.score_mapping = nn.Linear(self.decoder.cell.hidden_size,
                                        train_data.target_vocab.size)
-        self.tanh = nn.Tanh()
+        # self.tanh = nn.Tanh()
         self.mse_loss = nn.MSELoss()
         self.max_decoding_len = config_data.max_decoding_len
 
@@ -72,11 +75,11 @@ class Critic(nn.Module):
             # actor_states = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
             states = torch.stack([s.cell_state[0] for s in states], dim=0)  # len, bsz, hidden_size
             # print(states)
-            concat_states = torch.cat((states, actor_states), dim=-1)  # len, bsz, hid_sz *2
-            vocab_scores = self.score_mapping(concat_states)  # len, bsz, vocab_size
+            # concat_states = torch.cat((states, actor_states), dim=-1)  # len, bsz, hid_sz *2
+            vocab_scores = self.score_mapping(states)  # len, bsz, vocab_size
             seq_len, bsz, _ = vocab_scores.size()
 
-            vocab_scores = self.tanh(vocab_scores).transpose(1, 0).contiguous()  # bsz, len, vocab_size
+            vocab_scores = vocab_scores.transpose(1, 0).contiguous()  # bsz, len, vocab_size
             predicted_scores = []
             for i in range(bsz):
                 for j in range(seq_len):
@@ -116,9 +119,9 @@ class Critic(nn.Module):
                 max_decoding_length=self.max_decoding_len)
 
             states = torch.stack([s.cell_state[0] for s in states], dim=0)  # len, bsz, hidden_size
-            concat_states = torch.cat((states, actor_states), dim=-1)  # len, bsz, hid_sz *2
-            vocab_scores = self.score_mapping(concat_states)  # len, bsz, vocab_size
-            vocab_scores = self.tanh(vocab_scores)  # len, bsz, vocab_size
+            # concat_states = torch.cat((states, actor_states), dim=-1)  # len, bsz, hid_sz *2
+            vocab_scores = self.score_mapping(states)  # len, bsz, vocab_size
+            # vocab_scores = self.tanh(vocab_scores)  # len, bsz, vocab_size
             return vocab_scores.transpose(1, 0).contiguous()
         else:
             raise ValueError("Unsupported mode")
