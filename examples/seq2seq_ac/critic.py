@@ -39,9 +39,12 @@ class Critic(nn.Module):
         # suppose actor and critic has same hidden size
         # self.score_mapping = nn.Linear(self.decoder.cell.hidden_size * 2,
         #                                train_data.target_vocab.size)
+        self.score_hidden = nn.Linear(self.decoder.cell.hidden_size,
+                                    self.decoder.cell.hidden_size)
+
         self.score_mapping = nn.Linear(self.decoder.cell.hidden_size,
                                        train_data.target_vocab.size)
-        # self.tanh = nn.Tanh()
+        self.act = nn.ReLU()
         self.mse_loss = nn.MSELoss()
         self.max_decoding_len = config_data.max_decoding_len
 
@@ -76,7 +79,7 @@ class Critic(nn.Module):
             states = torch.stack([s.cell_state[0] for s in states], dim=0)  # len, bsz, hidden_size
             # print(states)
             # concat_states = torch.cat((states, actor_states), dim=-1)  # len, bsz, hid_sz *2
-            vocab_scores = self.score_mapping(states)  # len, bsz, vocab_size
+            vocab_scores = self.score_mapping(self.act(self.score_hidden(states)))  # len, bsz, vocab_size
             seq_len, bsz, _ = vocab_scores.size()
 
             vocab_scores = vocab_scores.transpose(1, 0).contiguous()  # bsz, len, vocab_size
@@ -98,9 +101,9 @@ class Critic(nn.Module):
             expectation = torch.sum(prob * q_score, dim=-1)  # bsz, len
             # seems that expectation and reward both have problem (detach() ? )
             qt = reward.detach() + expectation.detach()
-            print("avg predicted score: ", torch.mean(torch.mean(predicted_scores, dim=1)).item())
-            print("avg expectation score: ", torch.mean(torch.mean(expectation, dim=1)).item())
-            print("avg reward: ", torch.mean(torch.mean(reward, dim=1)).item())
+            # print("avg predicted score: ", torch.mean(torch.mean(predicted_scores, dim=1)).item())
+            # print("avg expectation score: ", torch.mean(torch.mean(expectation, dim=1)).item())
+            # print("avg reward: ", torch.mean(torch.mean(reward, dim=1)).item())
             loss = self.mse_loss(qt, predicted_scores)
             if regularization:
                 minus_average = predicted_scores - torch.mean(predicted_scores, dim=1, keepdim=True)
@@ -122,7 +125,7 @@ class Critic(nn.Module):
 
             states = torch.stack([s.cell_state[0] for s in states], dim=0)  # len, bsz, hidden_size
             # concat_states = torch.cat((states, actor_states), dim=-1)  # len, bsz, hid_sz *2
-            vocab_scores = self.score_mapping(states)  # len, bsz, vocab_size
+            vocab_scores = self.score_mapping(self.act(self.score_hidden(states)))  # len, bsz, vocab_size
             # vocab_scores = self.tanh(vocab_scores)  # len, bsz, vocab_size
             return vocab_scores.transpose(1, 0).contiguous()
         else:
