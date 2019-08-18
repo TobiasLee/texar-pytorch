@@ -98,7 +98,9 @@ class Critic(nn.Module):
             expectation = torch.sum(prob * q_score, dim=-1)  # bsz, len
             # seems that expectation and reward both have problem (detach() ? )
             qt = reward.detach() + expectation.detach()
-            print(torch.mean(torch.mean(predicted_scores, dim=1)))
+            print("avg predicted score: ", torch.mean(torch.mean(predicted_scores, dim=1)).item())
+            print("avg expectation score: ", torch.mean(torch.mean(expectation, dim=1)).item())
+            print("avg reward: ", torch.mean(torch.mean(reward, dim=1)).item())
             loss = self.mse_loss(qt, predicted_scores)
             if regularization:
                 minus_average = predicted_scores - torch.mean(predicted_scores, dim=1, keepdim=True)

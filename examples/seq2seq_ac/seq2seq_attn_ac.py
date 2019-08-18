@@ -11,6 +11,8 @@ from tqdm import tqdm
 from utils.util import compute_bleu
 from actor import Seq2SeqAttnActor
 from critic import Critic
+import time
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -163,14 +165,16 @@ def _main():
                 actor_states = torch.stack([s.cell_state[0] for s in actor_states], dim=0)  # len, bsz, hidden_size
                 # critic_initial_state = critic.
                 sampled_ids = torch.argmax(logits, dim=-1)  # bsz, len
+                t1 = time.time()
                 reward = compute_bleu(sampled_ids, batch['target_text_ids'], eos_token_id=actor.eos_token_id, device=device)  # len_bsz
+                bleu_time = time.time() - t1
                 # print("into critic")
                 pre_train_critic_optimizer.zero_grad()
 
                 loss = critic(batch, sampled_ids, logits=logits, reward=reward, target_actor=delay_actor,
                               target_critic=delay_critic, actor_states=actor_states)
                 total_loss += loss
-                t.set_description("step={}, avg loss={:.4f}".format(step, total_loss / step))
+                t.set_description("step={}, avg loss={:.4f}, compute bleu cost: {}".format(step, total_loss / step, bleu_time))
                 #    if step % config_data.display == 0:
                 #        print("pre-train loss at step {}: {}".format(step, loss))
                 loss.backward()
