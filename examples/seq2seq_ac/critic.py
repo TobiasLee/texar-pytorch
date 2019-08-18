@@ -65,7 +65,7 @@ class Critic(nn.Module):
 
             outputs, _, _, states = self.decoder(
                 memory=memory,
-                memory_sequence_length=batch['source_length'],
+                memory_sequence_length=batch['target_length'],
                 helper=helper_train,
                 inputs=sampled_id,  # batch_size, len
                 sequence_length=sample_len,
@@ -98,7 +98,7 @@ class Critic(nn.Module):
             expectation = torch.sum(prob * q_score, dim=-1)  # bsz, len
             # seems that expectation and reward both have problem (detach() ? )
             qt = reward.detach() + expectation.detach()
-
+            print(torch.mean(torch.mean(predicted_scores, dim=1)))
             loss = self.mse_loss(qt, predicted_scores)
             if regularization:
                 minus_average = predicted_scores - torch.mean(predicted_scores, dim=1, keepdim=True)
